@@ -8,8 +8,9 @@ thread last = NULL;
 void rr_admit(thread new);
 void rr_remove(thread victim);
 thread rr_next(void);
-
+void printlist();
 thread rr_next(void) {
+    
     thread curr;
 
     if(first==NULL){
@@ -31,6 +32,7 @@ thread rr_next(void) {
     }
 }
 void rr_remove(thread victim){
+    printlist();
     thread curr=first;
     while(curr!=NULL && curr->tid != victim->tid){
         curr = curr->sched_one;
@@ -50,7 +52,7 @@ void rr_remove(thread victim){
     else{
         first=curr->sched_one;
     }
-
+    printlist();
 }
 
 void rr_admit(thread new){
@@ -64,4 +66,14 @@ void rr_admit(thread new){
         last=new;
     }
 
+}
+void printlist(){
+    FILE *fp = fopen("test.txt", "a");
+    thread curr=first;
+    while(curr){
+        fprintf(fp,"%d->",curr->tid);
+        curr=curr->sched_one;
+    }
+    fprintf(fp,"\n");
+    fclose(fp);
 }

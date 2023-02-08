@@ -26,7 +26,6 @@ thread wcurr=NULL;
 tid_t count = 1;
 
 
-
 tid_t lwp_create(lwpfun function,void *argument){
     long int pagesize=sysconf(_SC_PAGE_SIZE);
     struct rlimit lim;
@@ -52,6 +51,7 @@ tid_t lwp_create(lwpfun function,void *argument){
     c->tid=count++;
 
     stack = (unsigned long *)((unsigned long)c->stack + (unsigned long)c->stacksize);
+    // stack[0] = (unsigned long)lwp_exit; 
     stack[-1] = (unsigned long)function; 
     stack[-2] = (unsigned long)stack;
 
@@ -87,19 +87,26 @@ void lwp_start(){
 }
 
 void lwp_yield(){
+    FILE *fp = fopen("test.txt", "a");
     thread temp;
     temp = curr;
     curr=schedule->next();
+    fprintf(fp,"Yield: %d\n",curr->tid);
     if(curr==NULL){
         exit(temp->status);
     }
     else{
         swap_rfiles(&temp->state, &curr->state);
     }
+    fclose(fp);
 }
 
 void lwp_exit(int exitval){
+    FILE *fp = fopen("test.txt", "a");
+    fprintf(fp,"test1\n");
+    
     if(curr!=NULL){
+        fprintf(fp,"test2\n");
         schedule->remove(curr);
         curr->status=MKTERMSTAT(LWP_TERM,exitval);
         if(zombies==NULL){
@@ -109,14 +116,33 @@ void lwp_exit(int exitval){
         else{
             zcurr->exited=curr;
         }
+        
+        if(waits!=NULL){
+            fprintf(fp,"waitlist\n");
+            schedule->admit(waits);
+            waits=waits->exited;
+        }
+        
+        fprintf(fp,"Exit: %d\n",curr->tid);
+        fclose(fp);
         lwp_yield();
     }
     
 }
 
 tid_t lwp_wait(int *status){
-    
-    while(zombies==NULL){
+    FILE *fp = fopen("test.txt", "a");
+    fprintf(fp,"Wait: %d\n", curr->tid);
+    fclose(fp);
+    if(zombies==NULL){
+        schedule->remove(curr);
+        if(waits==NULL){
+            waits=curr;
+            wcurr=waits;
+        }
+        else{
+            wcurr->exited=curr;
+        }
         lwp_yield();
     }
     thread temp=zombies;
@@ -126,6 +152,8 @@ tid_t lwp_wait(int *status){
     munmap(temp->stack,sizeof(temp->stacksize));
     free(temp);
     return t;
+    
+    
 }
 tid_t lwp_gettid(void) {
     if (!curr) {
