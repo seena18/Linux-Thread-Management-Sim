@@ -11,7 +11,7 @@ static void indentnum(void *num);
 
 int main(int argc, char *argv[]){
   long i;
-  printf("%d\n",sizeof(tid_t*));
+
   printf("Launching LWPS\n");
 
   /* spawn a number of individual LWPs */
@@ -43,13 +43,11 @@ static void indentnum(void *num) {
   int howfar;
 
   howfar=(long)num;              /* interpret num as an integer */
-  for(i=0;i<howfar;i++){
-    printf("%*d\n",howfar*5,howfar);
+  printf("Greetings from Thread %d. Yielding...\n",howfar);
     // printf("TID: %d",lwp_gettid());
-    lwp_yield();
-               /* let another have a turn */
-  }
-  
+  lwp_yield();
+
+  printf("I (%d) am still alive. Goodbye.\n",howfar);
   lwp_exit(i);                  /* bail when done.  This should
                                  * be unnecessary if the stack has
                                  * been properly prepared

@@ -70,10 +70,10 @@ void rr_admit(thread new){
         new->sched_two=last;
         last=new;
     }
-    // FILE *fp = fopen("test.txt", "a");
-    // fprintf(fp,"Admit: ");  
-    // fclose(fp);
-    // printlist();
+//     FILE *fp = fopen("test.txt", "a");
+//     fprintf(fp,"Admit: ");  
+//     fclose(fp);
+//     printlist();
 }
 void printlist(){
     FILE *fp = fopen("test.txt", "a");

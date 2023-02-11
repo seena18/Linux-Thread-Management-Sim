@@ -13,6 +13,7 @@ void rr_remove(thread victim);
 thread rr_next(void);
 void lwp_exit(int exitval);
 tid_t lwp_gettid(void);
+void printz();
 
 static struct scheduler rr_publish = {NULL, NULL, rr_admit, rr_remove, rr_next};
 scheduler schedule = &rr_publish;
@@ -39,6 +40,9 @@ tid_t lwp_create(lwpfun function,void *argument){
     if(lim.rlim_cur%pagesize!=0){
         lim.rlim_cur=lim.rlim_cur+(pagesize-lim.rlim_cur%pagesize);
     }
+    // FILE *fp = fopen("log.txt", "a+");
+    // fprintf(fp,"rlim: %d",lim.rlim_cur);
+    // fclose(fp);
     unsigned long *stack =
     mmap(
         NULL,
@@ -60,12 +64,18 @@ tid_t lwp_create(lwpfun function,void *argument){
     c->stacksize=lim.rlim_cur;
     c->tid=count++;
     stack = (unsigned long *)
-    ((unsigned long)c->stack + (unsigned long)c->stacksize);
-    // stack[0] = (unsigned long)lwp_exit; 
+    ((unsigned long)c->stack + (unsigned long)c->stacksize-8);
+    // FILE *fp = fopen("log.txt", "a+");
+    // fprintf(fp,"stack init: %d",sizeof(lwp_exit));
+    // fclose(fp);
+    stack[0] = (unsigned long)lwp_exit; 
+    // fp = fopen("log.txt", "a+");
+    // fprintf(fp,"stack init2\n");
+    // fclose(fp);
     stack[-1] = (unsigned long)function; 
     stack[-2] = (unsigned long)stack;
     
-
+    
     c->state.fxsave=FPU_INIT;
     c->state.rdi=(unsigned long)argument;
     c->state.rbp=(unsigned long)(stack-2);
@@ -133,15 +143,18 @@ void lwp_exit(int exitval){
     if(curr!=NULL){
         schedule->remove(curr);
         counter--;
-        curr->status=MKTERMSTAT(LWP_TERM,exitval);
+        fprintf(stderr,"Exitval: %d\n",exitval);
+        fprintf(stderr,"Exitval: %d\n",(exitval & 0xFF));
+        curr->status=MKTERMSTAT(LWP_TERM,(exitval & 0xFF));
         if(zombies==NULL){
             zombies=curr;
             zcurr=zombies;
         }
         else{
             zcurr->exited=curr;
+            zcurr=zcurr->exited;
         }
-        
+        // printz();
         if(waits!=NULL){
             schedule->admit(waits);
             counter++;
@@ -156,6 +169,7 @@ void lwp_exit(int exitval){
 }
 
 tid_t lwp_wait(int *status){
+    // printz();
     // FILE *fp = fopen("test.txt", "a");
     // fprintf(fp,"Wait: %d\n", curr->tid);
     // fclose(fp);
@@ -211,11 +225,12 @@ thread tid2thread(tid_t tid) {
     
 }
 void lwp_set_scheduler(scheduler sched){
-    if (sched->init) { /* check if init is NULL */
-        sched->init();
-    }
+    
     thread tmp;
     if(sched==NULL){
+        if (sched->init) { 
+            sched->init();
+        }
         scheduler s = &rr_publish;
         while((tmp=schedule->next())!=NULL){
             s->admit(tmp);
@@ -232,12 +247,23 @@ void lwp_set_scheduler(scheduler sched){
             schedule->remove(tmp);
         }
         if (schedule->shutdown) { 
-        schedule->shutdown();
-    }
+            
+        }
         schedule=sched;
     }
     
 }
 scheduler lwp_get_scheduler(void) {
     return schedule;
+}
+void printz(){
+    FILE *fp = fopen("test.txt", "a");
+    thread z=zombies;
+    fprintf(fp,"zombies: ");
+    while(z){
+        fprintf(fp,"%d->",z->tid);
+        z=z->exited;
+    }
+    fprintf(fp,"\n");
+    fclose(fp);
 }
