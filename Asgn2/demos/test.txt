@@ -1,26 +1,635 @@
-Yield: 1
+Admit: 1->
+Admit: 1->2->
+Admit: 1->2->3->
+Admit: 1->2->3->4->
+Admit: 1->2->3->4->5->
+Admit: 1->2->3->4->5->6->
+Admit: 1->2->3->4->5->6->7->
+Admit: 1->2->3->4->5->6->7->8->
+Next: 1
+Admit: 2->3->4->5->6->7->8->1->
+Yield 8 to 1
+
+Next: 2
+Admit: 3->4->5->6->7->8->1->2->
+Yield 1 to 2
+
+Next: 3
+Admit: 4->5->6->7->8->1->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->8->1->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->8->1->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->8->1->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 8->1->2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 8
+Admit: 1->2->3->4->5->6->7->8->
+Yield 7 to 8
+
 Wait: 8
-1->2->3->4->5->6->7->8->
-1->2->3->4->5->6->7->
-Yield: 2
-Yield: 3
-Yield: 4
-Yield: 5
-Yield: 6
-Yield: 7
-Yield: 8
-Yield: 2
-Yield: 3
-3->4->5->6->7->1->2->
-3->4->5->6->7->1->
-test1
-test2
-waitlist
+Remove: 1->2->3->4->5->6->7->
+Next: 1
+Admit: 2->3->4->5->6->7->1->
+Yield 8 to 1
+
+Next: 2
+Admit: 3->4->5->6->7->1->2->
+Yield 1 to 2
+
+Next: 3
+Admit: 4->5->6->7->1->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->1->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->1->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->1->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 1->2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 1
+Admit: 2->3->4->5->6->7->1->
+Yield 7 to 1
+
+Next: 2
+Admit: 3->4->5->6->7->1->2->
+Yield 1 to 2
+
+Next: 3
+Admit: 4->5->6->7->1->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->1->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->1->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->1->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 1->2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 1
+Admit: 2->3->4->5->6->7->1->
+Yield 7 to 1
+
+Next: 2
+Admit: 3->4->5->6->7->1->2->
+Yield 1 to 2
+
+Next: 3
+Admit: 4->5->6->7->1->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->1->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->1->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->1->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 1->2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 1
+Admit: 2->3->4->5->6->7->1->
+Yield 7 to 1
+
+Remove: 2->3->4->5->6->7->
+Admit: 2->3->4->5->6->7->8->
+Exit: 1
+Next: 2
+Admit: 3->4->5->6->7->8->2->
+Yield 1 to 2
+
+Next: 3
+Admit: 4->5->6->7->8->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->8->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->8->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->8->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 8->2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 8
+Admit: 2->3->4->5->6->7->8->
+Yield 7 to 8
+
+
+Status: 256Wait: 8
+Remove: 2->3->4->5->6->7->
+Next: 2
+Admit: 3->4->5->6->7->2->
+Yield 8 to 2
+
+Next: 3
+Admit: 4->5->6->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 2
+Admit: 3->4->5->6->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->6->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 2
+Admit: 3->4->5->6->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->6->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 2
+Admit: 3->4->5->6->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->6->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->2->3->4->5->6->
+Yield 5 to 6
+
+Next: 7
+Admit: 2->3->4->5->6->7->
+Yield 6 to 7
+
+Next: 2
+Admit: 3->4->5->6->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->6->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->6->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 6->7->2->3->4->5->
+Yield 4 to 5
+
+Next: 6
+Admit: 7->2->3->4->5->6->
+Yield 5 to 6
+
+Remove: 7->2->3->4->5->
+Admit: 7->2->3->4->5->8->
+Exit: 6
+Next: 7
+Admit: 2->3->4->5->8->7->
+Yield 6 to 7
+
+Next: 2
+Admit: 3->4->5->8->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->8->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->8->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 8->7->2->3->4->5->
+Yield 4 to 5
+
+Next: 8
+Admit: 7->2->3->4->5->8->
+Yield 5 to 8
+
+
+Status: 256Wait: 8
+Remove: 7->2->3->4->5->
+Next: 7
+Admit: 2->3->4->5->7->
+Yield 8 to 7
+
+Next: 2
+Admit: 3->4->5->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 7->2->3->4->5->
+Yield 4 to 5
+
+Next: 7
+Admit: 2->3->4->5->7->
+Yield 5 to 7
+
+Next: 2
+Admit: 3->4->5->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 7->2->3->4->5->
+Yield 4 to 5
+
+Next: 7
+Admit: 2->3->4->5->7->
+Yield 5 to 7
+
+Next: 2
+Admit: 3->4->5->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 7->2->3->4->5->
+Yield 4 to 5
+
+Next: 7
+Admit: 2->3->4->5->7->
+Yield 5 to 7
+
+Next: 2
+Admit: 3->4->5->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->5->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 5->7->2->3->4->
+Yield 3 to 4
+
+Next: 5
+Admit: 7->2->3->4->5->
+Yield 4 to 5
+
+Remove: 7->2->3->4->
+Admit: 7->2->3->4->8->
+Exit: 5
+Next: 7
+Admit: 2->3->4->8->7->
+Yield 5 to 7
+
+Next: 2
+Admit: 3->4->8->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->8->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 8->7->2->3->4->
+Yield 3 to 4
+
+Next: 8
+Admit: 7->2->3->4->8->
+Yield 4 to 8
+
+
+Status: 256Wait: 8
+Remove: 7->2->3->4->
+Next: 7
+Admit: 2->3->4->7->
+Yield 8 to 7
+
+Next: 2
+Admit: 3->4->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 7->2->3->4->
+Yield 3 to 4
+
+Next: 7
+Admit: 2->3->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 3->4->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 7->2->3->4->
+Yield 3 to 4
+
+Next: 7
+Admit: 2->3->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 3->4->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 7->2->3->4->
+Yield 3 to 4
+
+Next: 7
+Admit: 2->3->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 3->4->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->7->2->3->
+Yield 2 to 3
+
+Next: 4
+Admit: 7->2->3->4->
+Yield 3 to 4
+
+Next: 7
+Admit: 2->3->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 3->4->7->2->
+Yield 7 to 2
+
+Next: 3
+Admit: 4->7->2->3->
+Yield 2 to 3
+
+Remove: 4->7->2->
+Admit: 4->7->2->8->
+Exit: 3
+Next: 4
+Admit: 7->2->8->4->
+Yield 3 to 4
+
+Next: 7
+Admit: 2->8->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 8->4->7->2->
+Yield 7 to 2
+
+Next: 8
+Admit: 4->7->2->8->
+Yield 2 to 8
+
+
+Status: 256Wait: 8
+Remove: 4->7->2->
+Next: 4
+Admit: 7->2->4->
+Yield 8 to 4
+
+Next: 7
+Admit: 2->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 4->7->2->
+Yield 7 to 2
+
+Next: 4
+Admit: 7->2->4->
+Yield 2 to 4
+
+Next: 7
+Admit: 2->4->7->
+Yield 4 to 7
+
+Next: 2
+Admit: 4->7->2->
+Yield 7 to 2
+
+Remove: 4->7->
+Admit: 4->7->8->
 Exit: 2
-Yield: 4
-Yield: 5
-Yield: 6
-Yield: 7
-Yield: 1
-Yield: 2
-Yield: 1
+Next: 4
+Admit: 7->8->4->
+Yield 2 to 4
+
+Next: 7
+Admit: 8->4->7->
+Yield 4 to 7
+
+Next: 8
+Admit: 4->7->8->
+Yield 7 to 8
+
+
+Status: 256Wait: 8
+Remove: 4->7->
+Next: 4
+Admit: 7->4->
+Yield 8 to 4
+
+Next: 7
+Admit: 4->7->
+Yield 4 to 7
+
+Next: 4
+Admit: 7->4->
+Yield 7 to 4
+
+Next: 7
+Admit: 4->7->
+Yield 4 to 7
+
+Next: 4
+Admit: 7->4->
+Yield 7 to 4
+
+Next: 7
+Admit: 4->7->
+Yield 4 to 7
+
+Remove: 4->
+Admit: 4->8->
+Exit: 7
+Next: 4
+Admit: 8->4->
+Yield 7 to 4
+
+Next: 8
+Admit: 4->8->
+Yield 4 to 8
+
+
+Status: 256Wait: 8
+Remove: 4->
+Next: 4
+Admit: 4->
+Yield 8 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Next: 4
+Admit: 4->
+Yield 4 to 4
+
+Remove: 
+Admit: 8->
+Exit: 4
+Next: 8
+Admit: 8->
+Yield 4 to 8
+
+
+Status: 256

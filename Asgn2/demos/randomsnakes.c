@@ -53,6 +53,8 @@
 #define MAXSNAKES  100
 
 int main(int argc, char *argv[]){
+  FILE *fp = fopen("test.txt", "w+");
+  fclose(fp);
   int i,cnt,err;
   snake s[MAXSNAKES];
 
