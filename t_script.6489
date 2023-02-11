@@ -1,0 +1,22 @@
+Script started on Fri 10 Feb 2023 10:27:54 PM PST
+^[[ATID: 1
+TID: 1
+TID: 2
+TID: 2
+TID: 3
+TID: 3
+TID: 4
+TID: 4
+TID: 5
+TID: 5
+Greetings from Thread 0.  Yielding...
+Greetings from Thread 1.  Yielding...
+Greetings from Thread 2.  Yielding...
+Greetings from Thread 3.  Yielding...
+Greetings from Thread 4.  Yielding...
+I (0) am still alive.  Goodbye.
+I (1) am still alive.  Goodbye.
+I (2) am still alive.  Goodbye.
+I (3) am still alive.  Goodbye.
+I (4) am still alive.  Goodbye.
+LWPs have ended.

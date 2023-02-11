@@ -96,6 +96,7 @@ tid_t lwp_create(lwpfun function,void *argument){
     }
     else{
         lcurr->lib_one=c;
+        lcurr=lcurr->lib_one;
     }
     
 
@@ -113,6 +114,7 @@ void lwp_start(){
         }
         else{
             lcurr->lib_one=new;
+            lcurr=lcurr->lib_one;
         }
 
     curr=new;
@@ -183,26 +185,27 @@ tid_t lwp_wait(int *status){
         }
         else{
             wcurr->exited=curr;
+            wcurr=wcurr->exited;
         }
         lwp_yield();
     }
+    if(zombies!=NULL){
+        thread temp=zombies;
+        // fprintf(stderr,"TID: %d\n", zombies->tid);
+        if (status!=NULL){
+            *status=temp->status;
+        }
+        zombies=zombies->exited;
+        tid_t t=temp->tid;
+        munmap(temp->stack,sizeof(temp->stacksize));
+        // fprintf(stderr,"TID: %d\n", temp->tid);
+
+        if(temp!=NULL){
+            free(temp);
+        }
+        
     
-    thread temp=zombies;
-    if (status!=NULL){
-        *status=temp->status;
-    }
-    zombies=zombies->exited;
-    tid_t t=temp->tid;
-    munmap(temp->stack,sizeof(temp->stacksize));
-    // FILE *fp = fopen("test.txt", "a");
-    // fprintf(fp,"TID: %d\n", temp->tid);
-    // fclose(fp);
-    if(temp!=NULL){
-        free(temp);
-    }
-    
-    if(t){
-        return t;
+            return t;
     }
     else{
         return NO_THREAD;
@@ -217,13 +220,18 @@ tid_t lwp_gettid(void) {
     }
     return curr->tid;
 }
-
-thread tid2thread(tid_t tid) {
+//2 
+//1->2->
+thread tid2thread(tid_t vtid) {
     thread temp = lwps;
-    while(temp!=NULL && temp->tid != tid){
+    // fprintf(stderr,"vtid: %d\n",vtid);
+    while(temp!=NULL && temp->tid != vtid){
+        // fprintf(stderr,"%d->",temp->tid);
         temp = temp->lib_one;
     }
-    if(temp && temp->tid == tid){
+    // fprintf(stderr,"%d->",temp->tid);
+    if(temp!=NULL && temp->tid == vtid){
+        // fprintf(stderr,"\nreturn: %d\n",temp->tid);
         return temp;
     }
     else{

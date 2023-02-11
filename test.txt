@@ -67,19 +67,25 @@ Testing (failure details below):
         23) Transfer threads to same scheduler (live)     ... FAILURE.
         24) Transfer threads between schedulers check for ... FAILURE.
         25) Check that Returned TIDs are unique           ... ok.
-        26) Does tid2thread return the right thread?      ... FAILURE.
+        26) Does tid2thread return the right thread?      ... ok.
         27) Tid2thread() returns NULL given a bad tid?    ... FAILURE.
-        28) Is thread library using sched_one? sched_two? ... FAILURE.
+        28) Is thread library using sched_one? sched_two? ... ok.
         -----
-FAILURE. (19/28 passed)
+FAILURE. (21/28 passed)
 
 
 ----------------------------
-144 Corefile(s) Present:
+186 Corefile(s) Present:
+    core.10374
+    core.10409
+    core.10546
+    core.10579
     core.11599
     core.11612
+    core.11633
     core.11634
     core.11644
+    core.11702
     core.11741
     core.11760
     core.11776
@@ -88,8 +94,10 @@ FAILURE. (19/28 passed)
     core.11843
     core.11916
     core.11951
+    core.11969
     core.11997
     core.12031
+    core.12046
     core.13006
     core.13046
     core.13080
@@ -100,18 +108,40 @@ FAILURE. (19/28 passed)
     core.13246
     core.13279
     core.13313
+    core.13386
     core.13387
+    core.13422
     core.13423
     core.13458
     core.13492
+    core.13553
+    core.13601
     core.14929
     core.14976
     core.15139
     core.15179
+    core.1542
+    core.15618
+    core.15682
+    core.15956
+    core.16034
+    core.1618
+    core.18430
+    core.18461
+    core.18593
+    core.18629
+    core.19704
+    core.19739
+    core.19865
     core.19871
+    core.19899
     core.19905
     core.20032
     core.20068
+    core.20786
+    core.20835
+    core.20964
+    core.21033
     core.23179
     core.23257
     core.23404
@@ -159,10 +189,12 @@ FAILURE. (19/28 passed)
     core.30056
     core.30094
     core.30142
+    core.3017
     core.30192
     core.30262
     core.30338
     core.30455
+    core.3051
     core.30517
     core.30561
     core.30618
@@ -186,10 +218,12 @@ FAILURE. (19/28 passed)
     core.31865
     core.31918
     core.32109
+    core.3213
     core.32215
     core.32288
     core.32322
     core.32355
+    core.3272
     core.3352
     core.3452
     core.3513
@@ -207,9 +241,17 @@ FAILURE. (19/28 passed)
     core.4652
     core.4653
     core.538
+    core.5670
+    core.5712
     core.582
+    core.5883
+    core.5926
     core.616
     core.654
+    core.7491
+    core.7532
+    core.7669
+    core.7721
     core.8844
     core.8878
     core.8991
@@ -340,12 +382,12 @@ Bye
 ----------
 Submitted:
 ----------
-*** Error in `/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime': double free or corruption (!prev): 0x000000000143f010 ***
+*** Error in `/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime': double free or corruption (!prev): 0x0000000002267010 ***
 ======= Backtrace: =========
-/lib64/libc.so.6(+0x81329)[0x7f0d7757a329]
-./liblwp.so(lwp_wait+0x11f)[0x7f0d778c8a77]
+/lib64/libc.so.6(+0x81329)[0x7f655af36329]
+./liblwp.so(lwp_wait+0x149)[0x7f655b284ad7]
 /home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x40120c]
-/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f0d7751b555]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f655aed7555]
 /home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x4010ce]
 ======= Memory map: ========
 00400000-00401000 r--p 00000000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
@@ -353,37 +395,36 @@ Submitted:
 00402000-00403000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
 00403000-00404000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
 00404000-00405000 rw-p 00003000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-0143f000-01460000 rw-p 00000000 00:00 0                                  [heap]
-7f0d6c000000-7f0d6c021000 rw-p 00000000 00:00 0 
-7f0d6c021000-7f0d70000000 ---p 00000000 00:00 0 
-7f0d73ae5000-7f0d73afa000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f0d73afa000-7f0d73cf9000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f0d73cf9000-7f0d73cfa000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f0d73cfa000-7f0d73cfb000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f0d73cfb000-7f0d74cf9000 rw-p 00000000 00:00 0 
-7f0d74cfa000-7f0d754f9000 rw-p 00000000 00:00 0 
-7f0d754fa000-7f0d75cf9000 rw-p 00000000 00:00 0 
-7f0d75cfa000-7f0d764f9000 rw-p 00000000 00:00 0 
-7f0d764fa000-7f0d76cf9000 rw-p 00000000 00:00 0 
-7f0d76cfa000-7f0d774f9000 rw-p 00000000 00:00 0 
-7f0d774f9000-7f0d776bd000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f0d776bd000-7f0d778bc000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f0d778bc000-7f0d778c0000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f0d778c0000-7f0d778c2000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f0d778c2000-7f0d778c7000 rw-p 00000000 00:00 0 
-7f0d778c7000-7f0d778c9000 r-xp 00000000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f0d778c9000-7f0d77ac9000 ---p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f0d77ac9000-7f0d77aca000 r--p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f0d77aca000-7f0d77acb000 rw-p 00003000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f0d77acb000-7f0d77aed000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f0d77cd3000-7f0d77cd6000 rw-p 00000000 00:00 0 
-7f0d77ce9000-7f0d77cec000 rw-p 00000000 00:00 0 
-7f0d77cec000-7f0d77ced000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f0d77ced000-7f0d77cee000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f0d77cee000-7f0d77cef000 rw-p 00000000 00:00 0 
-7ffdeaa37000-7ffdeaa56000 rwxp 00000000 00:00 0                          [stack]
-7ffdeaa56000-7ffdeaa58000 rw-p 00000000 00:00 0 
-7ffdeab58000-7ffdeab5a000 r-xp 00000000 00:00 0                          [vdso]
+02267000-02288000 rw-p 00000000 00:00 0                                  [heap]
+7f6550000000-7f6550021000 rw-p 00000000 00:00 0 
+7f6550021000-7f6554000000 ---p 00000000 00:00 0 
+7f65574a1000-7f65574b6000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f65574b6000-7f65576b5000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f65576b5000-7f65576b6000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f65576b6000-7f65576b7000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f65576b7000-7f65586b5000 rw-p 00000000 00:00 0 
+7f65586b6000-7f6558eb5000 rw-p 00000000 00:00 0 
+7f6558eb6000-7f65596b5000 rw-p 00000000 00:00 0 
+7f65596b6000-7f6559eb5000 rw-p 00000000 00:00 0 
+7f6559eb6000-7f655a6b5000 rw-p 00000000 00:00 0 
+7f655a6b6000-7f655aeb5000 rw-p 00000000 00:00 0 
+7f655aeb5000-7f655b079000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f655b079000-7f655b278000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f655b278000-7f655b27c000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f655b27c000-7f655b27e000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f655b27e000-7f655b283000 rw-p 00000000 00:00 0 
+7f655b283000-7f655b286000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f655b286000-7f655b485000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f655b485000-7f655b486000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f655b486000-7f655b487000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f655b487000-7f655b4a9000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
+7f655b68f000-7f655b692000 rw-p 00000000 00:00 0 
+7f655b6a5000-7f655b6a8000 rw-p 00000000 00:00 0 
+7f655b6a8000-7f655b6a9000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
+7f655b6a9000-7f655b6aa000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
+7f655b6aa000-7f655b6ab000 rw-p 00000000 00:00 0 
+7ffd4d142000-7ffd4d163000 rwxp 00000000 00:00 0                          [stack]
+7ffd4d19c000-7ffd4d19e000 r-xp 00000000 00:00 0                          [vdso]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 100
 99
@@ -391,19 +432,19 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 97
 96
 95
-Child process (30739) exited due to signal (Aborted).
+Child process (20786) exited due to signal (Aborted).
 
 ---------------------------------
 Differences (< reference > output)
 ---------------------------------
 
-0a1,45
-> *** Error in `/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime': double free or corruption (!prev): 0x000000000143f010 ***
+0a1,44
+> *** Error in `/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime': double free or corruption (!prev): 0x0000000002267010 ***
 > ======= Backtrace: =========
-> /lib64/libc.so.6(+0x81329)[0x7f0d7757a329]
-> ./liblwp.so(lwp_wait+0x11f)[0x7f0d778c8a77]
+> /lib64/libc.so.6(+0x81329)[0x7f655af36329]
+> ./liblwp.so(lwp_wait+0x149)[0x7f655b284ad7]
 > /home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x40120c]
-> /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f0d7751b555]
+> /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f655aed7555]
 > /home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x4010ce]
 > ======= Memory map: ========
 > 00400000-00401000 r--p 00000000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
@@ -411,39 +452,38 @@ Differences (< reference > output)
 > 00402000-00403000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
 > 00403000-00404000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
 > 00404000-00405000 rw-p 00003000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-> 0143f000-01460000 rw-p 00000000 00:00 0                                  [heap]
-> 7f0d6c000000-7f0d6c021000 rw-p 00000000 00:00 0 
-> 7f0d6c021000-7f0d70000000 ---p 00000000 00:00 0 
-> 7f0d73ae5000-7f0d73afa000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f0d73afa000-7f0d73cf9000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f0d73cf9000-7f0d73cfa000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f0d73cfa000-7f0d73cfb000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f0d73cfb000-7f0d74cf9000 rw-p 00000000 00:00 0 
-> 7f0d74cfa000-7f0d754f9000 rw-p 00000000 00:00 0 
-> 7f0d754fa000-7f0d75cf9000 rw-p 00000000 00:00 0 
-> 7f0d75cfa000-7f0d764f9000 rw-p 00000000 00:00 0 
-> 7f0d764fa000-7f0d76cf9000 rw-p 00000000 00:00 0 
-> 7f0d76cfa000-7f0d774f9000 rw-p 00000000 00:00 0 
-> 7f0d774f9000-7f0d776bd000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f0d776bd000-7f0d778bc000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f0d778bc000-7f0d778c0000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f0d778c0000-7f0d778c2000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f0d778c2000-7f0d778c7000 rw-p 00000000 00:00 0 
-> 7f0d778c7000-7f0d778c9000 r-xp 00000000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f0d778c9000-7f0d77ac9000 ---p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f0d77ac9000-7f0d77aca000 r--p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f0d77aca000-7f0d77acb000 rw-p 00003000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f0d77acb000-7f0d77aed000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f0d77cd3000-7f0d77cd6000 rw-p 00000000 00:00 0 
-> 7f0d77ce9000-7f0d77cec000 rw-p 00000000 00:00 0 
-> 7f0d77cec000-7f0d77ced000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f0d77ced000-7f0d77cee000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f0d77cee000-7f0d77cef000 rw-p 00000000 00:00 0 
-> 7ffdeaa37000-7ffdeaa56000 rwxp 00000000 00:00 0                          [stack]
-> 7ffdeaa56000-7ffdeaa58000 rw-p 00000000 00:00 0 
-> 7ffdeab58000-7ffdeab5a000 r-xp 00000000 00:00 0                          [vdso]
+> 02267000-02288000 rw-p 00000000 00:00 0                                  [heap]
+> 7f6550000000-7f6550021000 rw-p 00000000 00:00 0 
+> 7f6550021000-7f6554000000 ---p 00000000 00:00 0 
+> 7f65574a1000-7f65574b6000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f65574b6000-7f65576b5000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f65576b5000-7f65576b6000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f65576b6000-7f65576b7000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f65576b7000-7f65586b5000 rw-p 00000000 00:00 0 
+> 7f65586b6000-7f6558eb5000 rw-p 00000000 00:00 0 
+> 7f6558eb6000-7f65596b5000 rw-p 00000000 00:00 0 
+> 7f65596b6000-7f6559eb5000 rw-p 00000000 00:00 0 
+> 7f6559eb6000-7f655a6b5000 rw-p 00000000 00:00 0 
+> 7f655a6b6000-7f655aeb5000 rw-p 00000000 00:00 0 
+> 7f655aeb5000-7f655b079000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f655b079000-7f655b278000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f655b278000-7f655b27c000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f655b27c000-7f655b27e000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f655b27e000-7f655b283000 rw-p 00000000 00:00 0 
+> 7f655b283000-7f655b286000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f655b286000-7f655b485000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f655b485000-7f655b486000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f655b486000-7f655b487000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f655b487000-7f655b4a9000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
+> 7f655b68f000-7f655b692000 rw-p 00000000 00:00 0 
+> 7f655b6a5000-7f655b6a8000 rw-p 00000000 00:00 0 
+> 7f655b6a8000-7f655b6a9000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
+> 7f655b6a9000-7f655b6aa000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
+> 7f655b6aa000-7f655b6ab000 rw-p 00000000 00:00 0 
+> 7ffd4d142000-7ffd4d163000 rwxp 00000000 00:00 0                          [stack]
+> 7ffd4d19c000-7ffd4d19e000 r-xp 00000000 00:00 0                          [vdso]
 > ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-7,101c52
+7,101c51
 < 94
 < 93
 < 92
@@ -540,7 +580,7 @@ Differences (< reference > output)
 < 1
 < Bye
 ---
-> Child process (30739) exited due to signal (Aborted).
+> Child process (20786) exited due to signal (Aborted).
 ---------
 =================================================
 TEST 17: Two Lwps. spawn then exits 50 times.
@@ -657,12 +697,12 @@ Bye
 ----------
 Submitted:
 ----------
-*** Error in `/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime': double free or corruption (!prev): 0x00000000004882f0 ***
+*** Error in `/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime': double free or corruption (!prev): 0x0000000000c4a2f0 ***
 ======= Backtrace: =========
-/lib64/libc.so.6(+0x81329)[0x7f20e60d1329]
-./liblwp.so(lwp_wait+0x11f)[0x7f20e641fa77]
+/lib64/libc.so.6(+0x81329)[0x7f23bcffa329]
+./liblwp.so(lwp_wait+0x149)[0x7f23bd348ad7]
 /home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x40121b]
-/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f20e6072555]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f23bcf9b555]
 /home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x4010ce]
 ======= Memory map: ========
 00400000-00401000 r--p 00000000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
@@ -670,40 +710,41 @@ Submitted:
 00402000-00403000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
 00403000-00404000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
 00404000-00405000 rw-p 00003000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-00488000-004a9000 rw-p 00000000 00:00 0                                  [heap]
-7f20dc000000-7f20dc021000 rw-p 00000000 00:00 0 
-7f20dc021000-7f20e0000000 ---p 00000000 00:00 0 
-7f20e0e3a000-7f20e0e4f000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f20e0e4f000-7f20e104e000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f20e104e000-7f20e104f000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f20e104f000-7f20e1050000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f20e1050000-7f20e1850000 rw-p 00000000 00:00 0 
-7f20e1851000-7f20e2050000 rw-p 00000000 00:00 0 
-7f20e2051000-7f20e2850000 rw-p 00000000 00:00 0 
-7f20e2851000-7f20e3050000 rw-p 00000000 00:00 0 
-7f20e3051000-7f20e3850000 rw-p 00000000 00:00 0 
-7f20e3851000-7f20e4050000 rw-p 00000000 00:00 0 
-7f20e4051000-7f20e4850000 rw-p 00000000 00:00 0 
-7f20e4851000-7f20e5050000 rw-p 00000000 00:00 0 
-7f20e5051000-7f20e5850000 rw-p 00000000 00:00 0 
-7f20e5851000-7f20e6050000 rw-p 00000000 00:00 0 
-7f20e6050000-7f20e6214000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f20e6214000-7f20e6413000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f20e6413000-7f20e6417000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f20e6417000-7f20e6419000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f20e6419000-7f20e641e000 rw-p 00000000 00:00 0 
-7f20e641e000-7f20e6420000 r-xp 00000000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f20e6420000-7f20e6620000 ---p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f20e6620000-7f20e6621000 r--p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f20e6621000-7f20e6622000 rw-p 00003000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-7f20e6622000-7f20e6644000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f20e682a000-7f20e682d000 rw-p 00000000 00:00 0 
-7f20e6840000-7f20e6843000 rw-p 00000000 00:00 0 
-7f20e6843000-7f20e6844000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f20e6844000-7f20e6845000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f20e6845000-7f20e6846000 rw-p 00000000 00:00 0 
-7ffe0d843000-7ffe0d864000 rwxp 00000000 00:00 0                          [stack]
-7ffe0d969000-7ffe0d96b000 r-xp 00000000 00:00 0                          [vdso]
+00c4a000-00c6b000 rw-p 00000000 00:00 0                                  [heap]
+7f23b0000000-7f23b0021000 rw-p 00000000 00:00 0 
+7f23b0021000-7f23b4000000 ---p 00000000 00:00 0 
+7f23b7d63000-7f23b7d78000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f23b7d78000-7f23b7f77000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f23b7f77000-7f23b7f78000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f23b7f78000-7f23b7f79000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f23b7f79000-7f23b8779000 rw-p 00000000 00:00 0 
+7f23b877a000-7f23b8f79000 rw-p 00000000 00:00 0 
+7f23b8f7a000-7f23b9779000 rw-p 00000000 00:00 0 
+7f23b977a000-7f23b9f79000 rw-p 00000000 00:00 0 
+7f23b9f7a000-7f23ba779000 rw-p 00000000 00:00 0 
+7f23ba77a000-7f23baf79000 rw-p 00000000 00:00 0 
+7f23baf7a000-7f23bb779000 rw-p 00000000 00:00 0 
+7f23bb77a000-7f23bbf79000 rw-p 00000000 00:00 0 
+7f23bbf7a000-7f23bc779000 rw-p 00000000 00:00 0 
+7f23bc77a000-7f23bcf79000 rw-p 00000000 00:00 0 
+7f23bcf79000-7f23bd13d000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f23bd13d000-7f23bd33c000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f23bd33c000-7f23bd340000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f23bd340000-7f23bd342000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
+7f23bd342000-7f23bd347000 rw-p 00000000 00:00 0 
+7f23bd347000-7f23bd34a000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f23bd34a000-7f23bd549000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f23bd549000-7f23bd54a000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f23bd54a000-7f23bd54b000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+7f23bd54b000-7f23bd56d000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
+7f23bd753000-7f23bd756000 rw-p 00000000 00:00 0 
+7f23bd769000-7f23bd76c000 rw-p 00000000 00:00 0 
+7f23bd76c000-7f23bd76d000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
+7f23bd76d000-7f23bd76e000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
+7f23bd76e000-7f23bd76f000 rw-p 00000000 00:00 0 
+7fff3ebc1000-7fff3ebe0000 rwxp 00000000 00:00 0                          [stack]
+7fff3ebe0000-7fff3ebe2000 rw-p 00000000 00:00 0 
+7fff3ebed000-7fff3ebef000 r-xp 00000000 00:00 0                          [vdso]
 ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
 Counter is 50.  Exiting
 Counter is 50.  Exiting
@@ -713,19 +754,19 @@ Counter is 48.  Exiting
 Counter is 48.  Exiting
 Counter is 47.  Exiting
 Counter is 47.  Exiting
-Child process (30781) exited due to signal (Aborted).
+Child process (20835) exited due to signal (Aborted).
 
 ---------------------------------
 Differences (< reference > output)
 ---------------------------------
 
-0a1,48
-> *** Error in `/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime': double free or corruption (!prev): 0x00000000004882f0 ***
+0a1,49
+> *** Error in `/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime': double free or corruption (!prev): 0x0000000000c4a2f0 ***
 > ======= Backtrace: =========
-> /lib64/libc.so.6(+0x81329)[0x7f20e60d1329]
-> ./liblwp.so(lwp_wait+0x11f)[0x7f20e641fa77]
+> /lib64/libc.so.6(+0x81329)[0x7f23bcffa329]
+> ./liblwp.so(lwp_wait+0x149)[0x7f23bd348ad7]
 > /home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x40121b]
-> /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f20e6072555]
+> /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f23bcf9b555]
 > /home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x4010ce]
 > ======= Memory map: ========
 > 00400000-00401000 r--p 00000000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
@@ -733,42 +774,43 @@ Differences (< reference > output)
 > 00402000-00403000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
 > 00403000-00404000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
 > 00404000-00405000 rw-p 00003000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-> 00488000-004a9000 rw-p 00000000 00:00 0                                  [heap]
-> 7f20dc000000-7f20dc021000 rw-p 00000000 00:00 0 
-> 7f20dc021000-7f20e0000000 ---p 00000000 00:00 0 
-> 7f20e0e3a000-7f20e0e4f000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f20e0e4f000-7f20e104e000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f20e104e000-7f20e104f000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f20e104f000-7f20e1050000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f20e1050000-7f20e1850000 rw-p 00000000 00:00 0 
-> 7f20e1851000-7f20e2050000 rw-p 00000000 00:00 0 
-> 7f20e2051000-7f20e2850000 rw-p 00000000 00:00 0 
-> 7f20e2851000-7f20e3050000 rw-p 00000000 00:00 0 
-> 7f20e3051000-7f20e3850000 rw-p 00000000 00:00 0 
-> 7f20e3851000-7f20e4050000 rw-p 00000000 00:00 0 
-> 7f20e4051000-7f20e4850000 rw-p 00000000 00:00 0 
-> 7f20e4851000-7f20e5050000 rw-p 00000000 00:00 0 
-> 7f20e5051000-7f20e5850000 rw-p 00000000 00:00 0 
-> 7f20e5851000-7f20e6050000 rw-p 00000000 00:00 0 
-> 7f20e6050000-7f20e6214000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f20e6214000-7f20e6413000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f20e6413000-7f20e6417000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f20e6417000-7f20e6419000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f20e6419000-7f20e641e000 rw-p 00000000 00:00 0 
-> 7f20e641e000-7f20e6420000 r-xp 00000000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f20e6420000-7f20e6620000 ---p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f20e6620000-7f20e6621000 r--p 00002000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f20e6621000-7f20e6622000 rw-p 00003000 00:2c 327441843                  /home/ssabed/csc453proj2/liblwp.so
-> 7f20e6622000-7f20e6644000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f20e682a000-7f20e682d000 rw-p 00000000 00:00 0 
-> 7f20e6840000-7f20e6843000 rw-p 00000000 00:00 0 
-> 7f20e6843000-7f20e6844000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f20e6844000-7f20e6845000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f20e6845000-7f20e6846000 rw-p 00000000 00:00 0 
-> 7ffe0d843000-7ffe0d864000 rwxp 00000000 00:00 0                          [stack]
-> 7ffe0d969000-7ffe0d96b000 r-xp 00000000 00:00 0                          [vdso]
+> 00c4a000-00c6b000 rw-p 00000000 00:00 0                                  [heap]
+> 7f23b0000000-7f23b0021000 rw-p 00000000 00:00 0 
+> 7f23b0021000-7f23b4000000 ---p 00000000 00:00 0 
+> 7f23b7d63000-7f23b7d78000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f23b7d78000-7f23b7f77000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f23b7f77000-7f23b7f78000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f23b7f78000-7f23b7f79000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7f23b7f79000-7f23b8779000 rw-p 00000000 00:00 0 
+> 7f23b877a000-7f23b8f79000 rw-p 00000000 00:00 0 
+> 7f23b8f7a000-7f23b9779000 rw-p 00000000 00:00 0 
+> 7f23b977a000-7f23b9f79000 rw-p 00000000 00:00 0 
+> 7f23b9f7a000-7f23ba779000 rw-p 00000000 00:00 0 
+> 7f23ba77a000-7f23baf79000 rw-p 00000000 00:00 0 
+> 7f23baf7a000-7f23bb779000 rw-p 00000000 00:00 0 
+> 7f23bb77a000-7f23bbf79000 rw-p 00000000 00:00 0 
+> 7f23bbf7a000-7f23bc779000 rw-p 00000000 00:00 0 
+> 7f23bc77a000-7f23bcf79000 rw-p 00000000 00:00 0 
+> 7f23bcf79000-7f23bd13d000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f23bd13d000-7f23bd33c000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f23bd33c000-7f23bd340000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f23bd340000-7f23bd342000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
+> 7f23bd342000-7f23bd347000 rw-p 00000000 00:00 0 
+> 7f23bd347000-7f23bd34a000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f23bd34a000-7f23bd549000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f23bd549000-7f23bd54a000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f23bd54a000-7f23bd54b000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
+> 7f23bd54b000-7f23bd56d000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
+> 7f23bd753000-7f23bd756000 rw-p 00000000 00:00 0 
+> 7f23bd769000-7f23bd76c000 rw-p 00000000 00:00 0 
+> 7f23bd76c000-7f23bd76d000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
+> 7f23bd76d000-7f23bd76e000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
+> 7f23bd76e000-7f23bd76f000 rw-p 00000000 00:00 0 
+> 7fff3ebc1000-7fff3ebe0000 rwxp 00000000 00:00 0                          [stack]
+> 7fff3ebe0000-7fff3ebe2000 rw-p 00000000 00:00 0 
+> 7fff3ebed000-7fff3ebef000 r-xp 00000000 00:00 0                          [vdso]
 > ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-9,102c57
+9,102c58
 < Counter is 46.  Exiting
 < Counter is 46.  Exiting
 < Counter is 45.  Exiting
@@ -864,7 +906,7 @@ Differences (< reference > output)
 < Bye
 < Bye
 ---
-> Child process (30781) exited due to signal (Aborted).
+> Child process (20835) exited due to signal (Aborted).
 ---------
 =================================================
 TEST 21: Transfer threads between schedulers (stopped)
@@ -901,7 +943,7 @@ Back from LWPS.
 ----------
 Submitted:
 ----------
-Child process (30929) exited due to signal (Segmentation fault).
+Child process (20964) exited due to signal (Segmentation fault).
 
 ---------------------------------
 Differences (< reference > output)
@@ -928,7 +970,7 @@ Differences (< reference > output)
 <                         5
 < Back from LWPS.
 ---
-> Child process (30929) exited due to signal (Segmentation fault).
+> Child process (20964) exited due to signal (Segmentation fault).
 ---------
 =================================================
 TEST 22: Transfer threads between schedulers (live)
@@ -980,7 +1022,7 @@ Back from LWPS.
 ----------
 Submitted:
 ----------
-Child process (30982) exited due to signal (Segmentation fault).
+Child process (21033) exited due to signal (Segmentation fault).
 
 ---------------------------------
 Differences (< reference > output)
@@ -1022,7 +1064,7 @@ Differences (< reference > output)
 <                         5
 < Back from LWPS.
 ---
-> Child process (30982) exited due to signal (Segmentation fault).
+> Child process (21033) exited due to signal (Segmentation fault).
 ---------
 =================================================
 TEST 23: Transfer threads to same scheduler (live)
@@ -1363,934 +1405,6 @@ Differences (< reference > output)
 < Back from LWPS.
 ---------
 =================================================
-TEST 26: Does tid2thread return the right thread?
-
-This is the similar numbersmain program distributed with the
-assignment, but with a scheduler that returns a random thread.
-(seeded, so reproducible).  After 50 iterations, the last thread runs
-through the list of all threads and sees if tid2thread is returning
-the right context.
-
-
-
-----------
-Reference:
-----------
-Launching LWPS
-                   4
-    1
-                                       8
-                   4
-         2
-              3
-                             6
-              3
-                   4
-                                            9
-                   4
-                                            9
-                                  7
-              3
-                                  7
-                   4
-                   4
-         2
-              3
-         2
-    1
-                                  7
-                   4
-              3
-         2
-    1
-                        5
-                             6
-                                  7
-              3
-              3
-              3
-                             6
-         2
-                        5
-                             6
-                   4
-                                       8
-                             6
-              3
-              3
-              3
-                        5
-    1
-                        5
-    1
-              3
-                        5
-                                       8
-    1
-         2
-              3
-         2
-    1
-    1
-                             6
-         2
-                             6
-    1
-                                  7
-                                  7
-              3
-                                            9
-         2
-    1
-                                       8
-         2
-                             6
-                                       8
-                                       8
-                                       8
-                                       8
-                                       8
-    1
-                                  7
-                                            9
-                        5
-         2
-                                  7
-                        5
-         2
-                                       8
-                                  7
-              3
-                             6
-              3
-                        5
-                   4
-                        5
-         2
-                                       8
-                                  7
-                                  7
-                                       8
-                                            9
-                                  7
-                                  7
-    1
-              3
-              3
-                   4
-                             6
-                                  7
-                             6
-                                            9
-                        5
-                                  7
-                   4
-                   4
-         2
-                   4
-         2
-                   4
-              3
-                   4
-    1
-                             6
-                                  7
-              3
-                                  7
-                   4
-                   4
-                                       8
-                        5
-                                  7
-    1
-              3
-              3
-                                  7
-    1
-                                       8
-                   4
-                                  7
-                   4
-                                            9
-                   4
-                             6
-         2
-                   4
-                        5
-                                       8
-    1
-                                            9
-              3
-                        5
-                        5
-                        5
-              3
-                        5
-                                            9
-              3
-                                            9
-         2
-                                  7
-                                       8
-    1
-                                  7
-         2
-                   4
-                             6
-                   4
-              3
-                                       8
-                                            9
-                        5
-                             6
-    1
-                                            9
-                   4
-    1
-                                       8
-                   4
-              3
-                                            9
-                                            9
-                                       8
-              3
-              3
-    1
-                        5
-                                  7
-                             6
-                                  7
-              3
-                        5
-                                       8
-                             6
-                        5
-              3
-         2
-              3
-                             6
-                   4
-                                            9
-         2
-                        5
-         2
-                                       8
-                                       8
-    1
-         2
-                                            9
-                                  7
-                             6
-                                       8
-                   4
-         2
-                                            9
-                   4
-                                  7
-                                  7
-                   4
-                   4
-                             6
-                             6
-                                       8
-         2
-                                       8
-    1
-                                            9
-                        5
-                             6
-                                       8
-                                            9
-                             6
-                                       8
-    1
-              3
-    1
-                   4
-                             6
-              3
-         2
-                                            9
-              3
-              3
-                                  7
-                                            9
-                        5
-                   4
-                                  7
-              3
-                             6
-    1
-                             6
-    1
-                        5
-                   4
-                        5
-         2
-                                            9
-                   4
-    1
-                                       8
-                   4
-                                  7
-                             6
-                   4
-                                  7
-                   4
-              3
-                                       8
-                                            9
-                             6
-                                       8
-                   4
-    1
-                                  7
-              3
-              3
-                             6
-                        5
-    1
-                                  7
-                                       8
-    1
-                                            9
-                             6
-                        5
-                        5
-                             6
-                   4
-                             6
-                   4
-                                  7
-                        5
-                                  7
-                                            9
-                   4
-                                  7
-                   4
-                        5
-                        5
-                   4
-         2
-                   4
-                             6
-                                       8
-                        5
-              3
-                        5
-                        5
-         2
-                                       8
-              3
-                                            9
-                             6
-    1
-                   4
-                                            9
-         2
-                             6
-                                  7
-    1
-                   4
-                                            9
-                                       8
-         2
-                                  7
-    1
-                                  7
-                                       8
-         2
-                             6
-                   4
-              3
-                                  7
-                                  7
-                                            9
-    1
-                                       8
-    1
-                                            9
-         2
-                                       8
-    1
-                                            9
-              3
-                                  7
-                                  7
-                        5
-                                            9
-                        5
-                   4
-         2
-                                       8
-    1
-                                       8
-                                       8
-                                  7
-                             6
-    1
-    1
-              3
-    1
-                                       8
-    1
-              3
-                                       8
-    1
-              3
-                             6
-                                       8
-                                  7
-    1
-    1
-         2
-                        5
-                             6
-         2
-              3
-         2
-    1
-                                  7
-                             6
-              3
-                   4
-                        5
-                                            9
-                                       8
-                             6
-    1
-                        5
-    1
-                        5
-                                  7
-                                       8
-              3
-                        5
-         2
-                                       8
-         2
-                                            9
-         2
-                   4
-         2
-                        5
-                                       8
-                        5
-                                            9
-                                  7
-                                            9
-                        5
-                        5
-                             6
-                             6
-                        5
-    1
-                                  7
-                                  7
-                                            9
-         2
-    1
-                                       8
-                             6
-         2
-                                       8
-                        5
-    1
-                                            9
-                                       8
-                             6
-                        5
-                        5
-                        5
-         2
-         2
-         2
-                             6
-                             6
-         2
-                             6
-         2
-                                            9
-         2
-                                            9
-                             6
-                                            9
-                             6
-         2
-         2
-                                            9
-                                            9
-                                            9
-                                            9
-                                            9
-                                            9
-                                            9
-Checking thread IDs...
-...done.
-----------
-Submitted:
-----------
-Launching LWPS
-                   4
-    1
-                                       8
-                   4
-         2
-              3
-                             6
-              3
-                   4
-                                            9
-                   4
-                                            9
-                                  7
-              3
-                                  7
-                   4
-                   4
-         2
-              3
-         2
-    1
-                                  7
-                   4
-              3
-         2
-    1
-                        5
-                             6
-                                  7
-              3
-              3
-              3
-                             6
-         2
-                        5
-                             6
-                   4
-                                       8
-                             6
-              3
-              3
-              3
-                        5
-    1
-                        5
-    1
-              3
-                        5
-                                       8
-    1
-         2
-              3
-         2
-    1
-    1
-                             6
-         2
-                             6
-    1
-                                  7
-                                  7
-              3
-                                            9
-         2
-    1
-                                       8
-         2
-                             6
-                                       8
-                                       8
-                                       8
-                                       8
-                                       8
-    1
-                                  7
-                                            9
-                        5
-         2
-                                  7
-                        5
-         2
-                                       8
-                                  7
-              3
-                             6
-              3
-                        5
-                   4
-                        5
-         2
-                                       8
-                                  7
-                                  7
-                                       8
-                                            9
-                                  7
-                                  7
-    1
-              3
-              3
-                   4
-                             6
-                                  7
-                             6
-                                            9
-                        5
-                                  7
-                   4
-                   4
-         2
-                   4
-         2
-                   4
-              3
-                   4
-    1
-                             6
-                                  7
-              3
-                                  7
-                   4
-                   4
-                                       8
-                        5
-                                  7
-    1
-              3
-              3
-                                  7
-    1
-                                       8
-                   4
-                                  7
-                   4
-                                            9
-                   4
-                             6
-         2
-                   4
-                        5
-                                       8
-    1
-                                            9
-              3
-                        5
-                        5
-                        5
-              3
-                        5
-                                            9
-              3
-                                            9
-         2
-                                  7
-                                       8
-    1
-                                  7
-         2
-                   4
-                             6
-                   4
-              3
-                                       8
-                                            9
-                        5
-                             6
-    1
-                                            9
-                   4
-    1
-                                       8
-                   4
-              3
-                                            9
-                                            9
-                                       8
-              3
-              3
-    1
-                        5
-                                  7
-                             6
-                                  7
-              3
-                        5
-                                       8
-                             6
-                        5
-              3
-         2
-              3
-                             6
-                   4
-                                            9
-         2
-                        5
-         2
-                                       8
-                                       8
-    1
-         2
-                                            9
-                                  7
-                             6
-                                       8
-                   4
-         2
-                                            9
-                   4
-                                  7
-                                  7
-                   4
-                   4
-                             6
-                             6
-                                       8
-         2
-                                       8
-    1
-                                            9
-                        5
-                             6
-                                       8
-                                            9
-                             6
-                                       8
-    1
-              3
-    1
-                   4
-                             6
-              3
-         2
-                                            9
-              3
-              3
-                                  7
-                                            9
-                        5
-                   4
-                                  7
-              3
-                             6
-    1
-                             6
-    1
-                        5
-                   4
-                        5
-         2
-                                            9
-                   4
-    1
-                                       8
-                   4
-                                  7
-                             6
-                   4
-                                  7
-                   4
-              3
-                                       8
-                                            9
-                             6
-                                       8
-                   4
-    1
-                                  7
-              3
-              3
-                             6
-                        5
-    1
-                                  7
-                                       8
-    1
-                                            9
-                             6
-                        5
-                        5
-                             6
-                   4
-                             6
-                   4
-                                  7
-                        5
-                                  7
-                                            9
-                   4
-                                  7
-                   4
-                        5
-                        5
-                   4
-         2
-                   4
-                             6
-                                       8
-                        5
-              3
-                        5
-                        5
-         2
-                                       8
-              3
-                                            9
-                             6
-    1
-                   4
-                                            9
-         2
-                             6
-                                  7
-    1
-                   4
-                                            9
-                                       8
-         2
-                                  7
-    1
-                                  7
-                                       8
-         2
-                             6
-                   4
-              3
-                                  7
-                                  7
-                                            9
-    1
-                                       8
-    1
-                                            9
-         2
-                                       8
-    1
-                                            9
-              3
-                                  7
-                                  7
-                        5
-                                            9
-                        5
-                   4
-         2
-                                       8
-    1
-                                       8
-                                       8
-                                  7
-                             6
-    1
-    1
-              3
-    1
-                                       8
-    1
-              3
-                                       8
-    1
-              3
-                             6
-                                       8
-                                  7
-    1
-    1
-         2
-                        5
-                             6
-         2
-              3
-         2
-    1
-                                  7
-                             6
-              3
-                   4
-                        5
-                                            9
-                                       8
-                             6
-    1
-                        5
-    1
-                        5
-                                  7
-                                       8
-              3
-                        5
-         2
-                                       8
-         2
-                                            9
-         2
-                   4
-         2
-                        5
-                                       8
-                        5
-                                            9
-                                  7
-                                            9
-                        5
-                        5
-                             6
-                             6
-                        5
-    1
-                                  7
-                                  7
-                                            9
-         2
-    1
-                                       8
-                             6
-         2
-                                       8
-                        5
-    1
-                                            9
-                                       8
-                             6
-                        5
-                        5
-                        5
-         2
-         2
-         2
-                             6
-                             6
-         2
-                             6
-         2
-                                            9
-         2
-                                            9
-                             6
-                                            9
-                             6
-         2
-         2
-                                            9
-                                            9
-                                            9
-                                            9
-                                            9
-                                            9
-                                            9
-Checking thread IDs...
-  tid2thread() returned the wrong pointer (tid=9)
-...done.
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-450a451
->   tid2thread() returned the wrong pointer (tid=9)
----------
-=================================================
 TEST 27: Tid2thread() returns NULL given a bad tid?
 
 This launches a single thread, then calls tid2thread with 
@@ -2315,906 +1429,4 @@ Differences (< reference > output)
 
 0a1
 > tid2thread() returned a value with a bogus tid.  Not good
----------
-=================================================
-TEST 28: Is thread library using sched_{one,two}?
-
-This launches a set of threads, then installs a scheduler that 
-intentionally places bogus values in sched_one and sched_two then 
-calls tid2thread() a bunch.
-
-
-
-----------
-Reference:
-----------
-Launching LWPS
-  1
-     2
-        3
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-        3
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-     2
-        3
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                                    18
-                                                       19
-                                                          20
-                                                       19
-                                                          20
-                                                          20
-Back from LWPS.
-----------
-Submitted:
-----------
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-tid2thread() is returning bogus values
-Launching LWPS
-  1
-     2
-        3
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-        3
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-     2
-        3
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-           4
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-              5
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                 6
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                    7
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                       8
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                          9
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                            10
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                               11
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                  12
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                     13
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                        14
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                           15
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                              16
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                                 17
-                                                    18
-                                                       19
-                                                          20
-                                                    18
-                                                       19
-                                                          20
-                                                       19
-                                                          20
-                                                          20
-Back from LWPS.
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-0a1,228
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
-> tid2thread() is returning bogus values
 ---------

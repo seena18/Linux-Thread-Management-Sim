@@ -1,0 +1,4 @@
+Script started on Fri 10 Feb 2023 10:21:46 PM PST
+^[[A^CParent process (1694) caught signal (Interrupt).
+Forwarding signal (Interrupt) to child.
+Child process (1711) exited due to signal (Interrupt).
