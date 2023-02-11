@@ -1,0 +1,3 @@
+^CParent process (26916) caught signal (Interrupt).
+Forwarding signal (Interrupt) to child.
+Child process (26925) exited due to signal (Interrupt).

@@ -10,27 +10,24 @@
 static void indentnum(void *num);
 
 int main(int argc, char *argv[]){
-  long i;
+
 
   printf("Launching LWPS\n");
 
   /* spawn a number of individual LWPs */
-  for(i=1;i<=5;i++) {
-    lwp_create((lwpfun)indentnum,(void*)i);
-  }
+  long  i = 100;
+  lwp_create((lwpfun)indentnum, (void*)i);
+
 
   lwp_start();
 
   /* spawn a number of individual LWPs */
-  for(i=1;i<=5;i++) {
-    int status,num;
-    tid_t t;
-    t = lwp_wait(&status);
-    num = LWPTERMSTAT(status);
-    printf("Thread %ld exited with status %d\n",t,num);
-  }
 
-  printf("Back from LWPS.\n");
+    
+int status;
+  lwp_wait(&status);
+
+  printf("Bye\n");
   lwp_exit(0);
   return 0;
 }
@@ -39,18 +36,26 @@ static void indentnum(void *num) {
   /* print the number num num times, indented by 5*num spaces
    * Not terribly interesting, but it is instructive.
    */
-  long i;
-  int howfar;
+    int howfar;
 
-  howfar=(long)num;              /* interpret num as an integer */
-  printf("Greetings from Thread %d. Yielding...\n",howfar);
-    // printf("TID: %d",lwp_gettid());
-  lwp_yield();
+    howfar=(long)num;
+    
+    if (howfar!=0){
+      fprintf(stderr,"%d\n",howfar);
+      howfar--;
+    
 
-  printf("I (%d) am still alive. Goodbye.\n",howfar);
-  lwp_exit(i);                  /* bail when done.  This should
+      lwp_create((lwpfun)indentnum, (void*)howfar);
+      int status;
+      tid_t t;
+      t = lwp_wait(&status);
+    }
+    lwp_exit(howfar);
+
+  }
+                   /* bail when done.  This should
                                  * be unnecessary if the stack has
                                  * been properly prepared
                                  */
-}
+
 
