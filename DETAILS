@@ -1,1138 +1,943 @@
 =================================================
-TEST 16: Lwp spawns another then exits 100 times.
+TEST 26: Does tid2thread return the right thread?
 
-One thread creates a new one, then exits.
+This is the similar numbersmain program distributed with the
+assignment, but with a scheduler that returns a random thread.
+(seeded, so reproducible).  After 50 iterations, the last thread runs
+through the list of all threads and sees if tid2thread is returning
+the right context.
 
 
 
 ----------
 Reference:
 ----------
-100
-99
-98
-97
-96
-95
-94
-93
-92
-91
-90
-89
-88
-87
-86
-85
-84
-83
-82
-81
-80
-79
-78
-77
-76
-75
-74
-73
-72
-71
-70
-69
-68
-67
-66
-65
-64
-63
-62
-61
-60
-59
-58
-57
-56
-55
-54
-53
-52
-51
-50
-49
-48
-47
-46
-45
-44
-43
-42
-41
-40
-39
-38
-37
-36
-35
-34
-33
-32
-31
-30
-29
-28
-27
-26
-25
-24
-23
-22
-21
-20
-19
-18
-17
-16
-15
-14
-13
-12
-11
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-Bye
+Launching LWPS
+                   4
+    1
+                                       8
+                   4
+         2
+              3
+                             6
+              3
+                   4
+                                            9
+                   4
+                                            9
+                                  7
+              3
+                                  7
+                   4
+                   4
+         2
+              3
+         2
+    1
+                                  7
+                   4
+              3
+         2
+    1
+                        5
+                             6
+                                  7
+              3
+              3
+              3
+                             6
+         2
+                        5
+                             6
+                   4
+                                       8
+                             6
+              3
+              3
+              3
+                        5
+    1
+                        5
+    1
+              3
+                        5
+                                       8
+    1
+         2
+              3
+         2
+    1
+    1
+                             6
+         2
+                             6
+    1
+                                  7
+                                  7
+              3
+                                            9
+         2
+    1
+                                       8
+         2
+                             6
+                                       8
+                                       8
+                                       8
+                                       8
+                                       8
+    1
+                                  7
+                                            9
+                        5
+         2
+                                  7
+                        5
+         2
+                                       8
+                                  7
+              3
+                             6
+              3
+                        5
+                   4
+                        5
+         2
+                                       8
+                                  7
+                                  7
+                                       8
+                                            9
+                                  7
+                                  7
+    1
+              3
+              3
+                   4
+                             6
+                                  7
+                             6
+                                            9
+                        5
+                                  7
+                   4
+                   4
+         2
+                   4
+         2
+                   4
+              3
+                   4
+    1
+                             6
+                                  7
+              3
+                                  7
+                   4
+                   4
+                                       8
+                        5
+                                  7
+    1
+              3
+              3
+                                  7
+    1
+                                       8
+                   4
+                                  7
+                   4
+                                            9
+                   4
+                             6
+         2
+                   4
+                        5
+                                       8
+    1
+                                            9
+              3
+                        5
+                        5
+                        5
+              3
+                        5
+                                            9
+              3
+                                            9
+         2
+                                  7
+                                       8
+    1
+                                  7
+         2
+                   4
+                             6
+                   4
+              3
+                                       8
+                                            9
+                        5
+                             6
+    1
+                                            9
+                   4
+    1
+                                       8
+                   4
+              3
+                                            9
+                                            9
+                                       8
+              3
+              3
+    1
+                        5
+                                  7
+                             6
+                                  7
+              3
+                        5
+                                       8
+                             6
+                        5
+              3
+         2
+              3
+                             6
+                   4
+                                            9
+         2
+                        5
+         2
+                                       8
+                                       8
+    1
+         2
+                                            9
+                                  7
+                             6
+                                       8
+                   4
+         2
+                                            9
+                   4
+                                  7
+                                  7
+                   4
+                   4
+                             6
+                             6
+                                       8
+         2
+                                       8
+    1
+                                            9
+                        5
+                             6
+                                       8
+                                            9
+                             6
+                                       8
+    1
+              3
+    1
+                   4
+                             6
+              3
+         2
+                                            9
+              3
+              3
+                                  7
+                                            9
+                        5
+                   4
+                                  7
+              3
+                             6
+    1
+                             6
+    1
+                        5
+                   4
+                        5
+         2
+                                            9
+                   4
+    1
+                                       8
+                   4
+                                  7
+                             6
+                   4
+                                  7
+                   4
+              3
+                                       8
+                                            9
+                             6
+                                       8
+                   4
+    1
+                                  7
+              3
+              3
+                             6
+                        5
+    1
+                                  7
+                                       8
+    1
+                                            9
+                             6
+                        5
+                        5
+                             6
+                   4
+                             6
+                   4
+                                  7
+                        5
+                                  7
+                                            9
+                   4
+                                  7
+                   4
+                        5
+                        5
+                   4
+         2
+                   4
+                             6
+                                       8
+                        5
+              3
+                        5
+                        5
+         2
+                                       8
+              3
+                                            9
+                             6
+    1
+                   4
+                                            9
+         2
+                             6
+                                  7
+    1
+                   4
+                                            9
+                                       8
+         2
+                                  7
+    1
+                                  7
+                                       8
+         2
+                             6
+                   4
+              3
+                                  7
+                                  7
+                                            9
+    1
+                                       8
+    1
+                                            9
+         2
+                                       8
+    1
+                                            9
+              3
+                                  7
+                                  7
+                        5
+                                            9
+                        5
+                   4
+         2
+                                       8
+    1
+                                       8
+                                       8
+                                  7
+                             6
+    1
+    1
+              3
+    1
+                                       8
+    1
+              3
+                                       8
+    1
+              3
+                             6
+                                       8
+                                  7
+    1
+    1
+         2
+                        5
+                             6
+         2
+              3
+         2
+    1
+                                  7
+                             6
+              3
+                   4
+                        5
+                                            9
+                                       8
+                             6
+    1
+                        5
+    1
+                        5
+                                  7
+                                       8
+              3
+                        5
+         2
+                                       8
+         2
+                                            9
+         2
+                   4
+         2
+                        5
+                                       8
+                        5
+                                            9
+                                  7
+                                            9
+                        5
+                        5
+                             6
+                             6
+                        5
+    1
+                                  7
+                                  7
+                                            9
+         2
+    1
+                                       8
+                             6
+         2
+                                       8
+                        5
+    1
+                                            9
+                                       8
+                             6
+                        5
+                        5
+                        5
+         2
+         2
+         2
+                             6
+                             6
+         2
+                             6
+         2
+                                            9
+         2
+                                            9
+                             6
+                                            9
+                             6
+         2
+         2
+                                            9
+                                            9
+                                            9
+                                            9
+                                            9
+                                            9
+                                            9
+Checking thread IDs...
+...done.
 ----------
 Submitted:
 ----------
-*** Error in `/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime': double free or corruption (!prev): 0x0000000002267010 ***
-======= Backtrace: =========
-/lib64/libc.so.6(+0x81329)[0x7f655af36329]
-./liblwp.so(lwp_wait+0x149)[0x7f655b284ad7]
-/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x40120c]
-/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f655aed7555]
-/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x4010ce]
-======= Memory map: ========
-00400000-00401000 r--p 00000000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-00401000-00402000 r-xp 00001000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-00402000-00403000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-00403000-00404000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-00404000-00405000 rw-p 00003000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-02267000-02288000 rw-p 00000000 00:00 0                                  [heap]
-7f6550000000-7f6550021000 rw-p 00000000 00:00 0 
-7f6550021000-7f6554000000 ---p 00000000 00:00 0 
-7f65574a1000-7f65574b6000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f65574b6000-7f65576b5000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f65576b5000-7f65576b6000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f65576b6000-7f65576b7000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f65576b7000-7f65586b5000 rw-p 00000000 00:00 0 
-7f65586b6000-7f6558eb5000 rw-p 00000000 00:00 0 
-7f6558eb6000-7f65596b5000 rw-p 00000000 00:00 0 
-7f65596b6000-7f6559eb5000 rw-p 00000000 00:00 0 
-7f6559eb6000-7f655a6b5000 rw-p 00000000 00:00 0 
-7f655a6b6000-7f655aeb5000 rw-p 00000000 00:00 0 
-7f655aeb5000-7f655b079000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f655b079000-7f655b278000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f655b278000-7f655b27c000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f655b27c000-7f655b27e000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f655b27e000-7f655b283000 rw-p 00000000 00:00 0 
-7f655b283000-7f655b286000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f655b286000-7f655b485000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f655b485000-7f655b486000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f655b486000-7f655b487000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f655b487000-7f655b4a9000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f655b68f000-7f655b692000 rw-p 00000000 00:00 0 
-7f655b6a5000-7f655b6a8000 rw-p 00000000 00:00 0 
-7f655b6a8000-7f655b6a9000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f655b6a9000-7f655b6aa000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f655b6aa000-7f655b6ab000 rw-p 00000000 00:00 0 
-7ffd4d142000-7ffd4d163000 rwxp 00000000 00:00 0                          [stack]
-7ffd4d19c000-7ffd4d19e000 r-xp 00000000 00:00 0                          [vdso]
-ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-100
-99
-98
-97
-96
-95
-Child process (20786) exited due to signal (Aborted).
+Launching LWPS
+                   4
+    1
+                                       8
+                   4
+         2
+              3
+                             6
+              3
+                   4
+                                            9
+                   4
+                                            9
+                                  7
+              3
+                                  7
+                   4
+                   4
+         2
+              3
+         2
+    1
+                                  7
+                   4
+              3
+         2
+    1
+                        5
+                             6
+                                  7
+              3
+              3
+              3
+                             6
+         2
+                        5
+                             6
+                   4
+                                       8
+                             6
+              3
+              3
+              3
+                        5
+    1
+                        5
+    1
+              3
+                        5
+                                       8
+    1
+         2
+              3
+         2
+    1
+    1
+                             6
+         2
+                             6
+    1
+                                  7
+                                  7
+              3
+                                            9
+         2
+    1
+                                       8
+         2
+                             6
+                                       8
+                                       8
+                                       8
+                                       8
+                                       8
+    1
+                                  7
+                                            9
+                        5
+         2
+                                  7
+                        5
+         2
+                                       8
+                                  7
+              3
+                             6
+              3
+                        5
+                   4
+                        5
+         2
+                                       8
+                                  7
+                                  7
+                                       8
+                                            9
+                                  7
+                                  7
+    1
+              3
+              3
+                   4
+                             6
+                                  7
+                             6
+                                            9
+                        5
+                                  7
+                   4
+                   4
+         2
+                   4
+         2
+                   4
+              3
+                   4
+    1
+                             6
+                                  7
+              3
+                                  7
+                   4
+                   4
+                                       8
+                        5
+                                  7
+    1
+              3
+              3
+                                  7
+    1
+                                       8
+                   4
+                                  7
+                   4
+                                            9
+                   4
+                             6
+         2
+                   4
+                        5
+                                       8
+    1
+                                            9
+              3
+                        5
+                        5
+                        5
+              3
+vtid: 9
+                        5
+2051852216->9->                                            9
+10->              3
+
+                                            9
+
+return: 9
+         2
+                                  7
+                                       8
+    1
+                                  7
+         2
+                   4
+                             6
+                   4
+              3
+                                       8
+                                            9
+                        5
+                             6
+    1
+                                            9
+                   4
+    1
+                                       8
+                   4
+              3
+                                            9
+                                            9
+                                       8
+              3
+              3
+    1
+                        5
+                                  7
+                             6
+                                  7
+              3
+                        5
+                                       8
+                             6
+                        5
+              3
+         2
+              3
+                             6
+                   4
+                                            9
+         2
+                        5
+         2
+                                       8
+                                       8
+    1
+         2
+                                            9
+                                  7
+                             6
+                                       8
+                   4
+         2
+                                            9
+                   4
+                                  7
+                                  7
+                   4
+                   4
+                             6
+                             6
+                                       8
+         2
+                                       8
+    1
+                                            9
+                        5
+                             6
+                                       8
+                                            9
+                             6
+                                       8
+    1
+              3
+    1
+                   4
+                             6
+              3
+         2
+                                            9
+              3
+              3
+                                  7
+                                            9
+                        5
+                   4
+                                  7
+              3
+                             6
+    1
+                             6
+    1
+                        5
+                   4
+                        5
+         2
+                                            9
+                   4
+    1
+                                       8
+                   4
+                                  7
+                             6
+                   4
+                                  7
+                   4
+              3
+                                       8
+                                            9
+                             6
+                                       8
+                   4
+    1
+                                  7
+              3
+              3
+                             6
+                        5
+    1
+                                  7
+                                       8
+    1
+                                            9
+                             6
+                        5
+                        5
+                             6
+                   4
+                             6
+                   4
+                                  7
+                        5
+                                  7
+                                            9
+                   4
+                                  7
+                   4
+                        5
+                        5
+                   4
+         2
+                   4
+                             6
+                                       8
+                        5
+              3
+                        5
+                        5
+         2
+                                       8
+              3
+                                            9
+                             6
+    1
+                   4
+                                            9
+         2
+                             6
+                                  7
+    1
+                   4
+                                            9
+                                       8
+         2
+                                  7
+    1
+                                  7
+                                       8
+         2
+                             6
+                   4
+              3
+                                  7
+                                  7
+                                            9
+    1
+                                       8
+    1
+                                            9
+         2
+                                       8
+    1
+                                            9
+              3
+                                  7
+                                  7
+                        5
+                                            9
+                        5
+                   4
+         2
+                                       8
+    1
+                                       8
+                                       8
+                                  7
+                             6
+    1
+    1
+              3
+    1
+                                       8
+    1
+              3
+                                       8
+    1
+              3
+                             6
+                                       8
+                                  7
+    1
+    1
+         2
+                        5
+                             6
+         2
+              3
+         2
+    1
+                                  7
+                             6
+              3
+                   4
+                        5
+                                            9
+                                       8
+                             6
+    1
+                        5
+    1
+                        5
+                                  7
+                                       8
+              3
+                        5
+         2
+                                       8
+         2
+                                            9
+         2
+                   4
+         2
+                        5
+                                       8
+                        5
+                                            9
+                                  7
+                                            9
+                        5
+                        5
+                             6
+                             6
+                        5
+    1
+                                  7
+                                  7
+                                            9
+         2
+    1
+                                       8
+                             6
+         2
+                                       8
+                        5
+    1
+                                            9
+                                       8
+                             6
+                        5
+                        5
+                        5
+         2
+         2
+         2
+                             6
+                             6
+         2
+                             6
+         2
+                                            9
+         2
+                                            9
+                             6
+                                            9
+                             6
+         2
+         2
+                                            9
+                                            9
+                                            9
+                                            9
+                                            9
+                                            9
+                                            9
+Checking thread IDs...
+...done.
 
 ---------------------------------
 Differences (< reference > output)
 ---------------------------------
 
-0a1,44
-> *** Error in `/home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime': double free or corruption (!prev): 0x0000000002267010 ***
-> ======= Backtrace: =========
-> /lib64/libc.so.6(+0x81329)[0x7f655af36329]
-> ./liblwp.so(lwp_wait+0x149)[0x7f655b284ad7]
-> /home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x40120c]
-> /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f655aed7555]
-> /home/pn-cs453/lib/asgn2//testlib/16_100_procs_oneatatime/16_100_procs_oneatatime[0x4010ce]
-> ======= Memory map: ========
-> 00400000-00401000 r--p 00000000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-> 00401000-00402000 r-xp 00001000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-> 00402000-00403000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-> 00403000-00404000 r--p 00002000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-> 00404000-00405000 rw-p 00003000 00:42 125282857                          /home/pn-cs453/lib/asgn2/testlib/16_100_procs_oneatatime/16_100_procs_oneatatime
-> 02267000-02288000 rw-p 00000000 00:00 0                                  [heap]
-> 7f6550000000-7f6550021000 rw-p 00000000 00:00 0 
-> 7f6550021000-7f6554000000 ---p 00000000 00:00 0 
-> 7f65574a1000-7f65574b6000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f65574b6000-7f65576b5000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f65576b5000-7f65576b6000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f65576b6000-7f65576b7000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f65576b7000-7f65586b5000 rw-p 00000000 00:00 0 
-> 7f65586b6000-7f6558eb5000 rw-p 00000000 00:00 0 
-> 7f6558eb6000-7f65596b5000 rw-p 00000000 00:00 0 
-> 7f65596b6000-7f6559eb5000 rw-p 00000000 00:00 0 
-> 7f6559eb6000-7f655a6b5000 rw-p 00000000 00:00 0 
-> 7f655a6b6000-7f655aeb5000 rw-p 00000000 00:00 0 
-> 7f655aeb5000-7f655b079000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f655b079000-7f655b278000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f655b278000-7f655b27c000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f655b27c000-7f655b27e000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f655b27e000-7f655b283000 rw-p 00000000 00:00 0 
-> 7f655b283000-7f655b286000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f655b286000-7f655b485000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f655b485000-7f655b486000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f655b486000-7f655b487000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f655b487000-7f655b4a9000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f655b68f000-7f655b692000 rw-p 00000000 00:00 0 
-> 7f655b6a5000-7f655b6a8000 rw-p 00000000 00:00 0 
-> 7f655b6a8000-7f655b6a9000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f655b6a9000-7f655b6aa000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f655b6aa000-7f655b6ab000 rw-p 00000000 00:00 0 
-> 7ffd4d142000-7ffd4d163000 rwxp 00000000 00:00 0                          [stack]
-> 7ffd4d19c000-7ffd4d19e000 r-xp 00000000 00:00 0                          [vdso]
-> ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-7,101c51
-< 94
-< 93
-< 92
-< 91
-< 90
-< 89
-< 88
-< 87
-< 86
-< 85
-< 84
-< 83
-< 82
-< 81
-< 80
-< 79
-< 78
-< 77
-< 76
-< 75
-< 74
-< 73
-< 72
-< 71
-< 70
-< 69
-< 68
-< 67
-< 66
-< 65
-< 64
-< 63
-< 62
-< 61
-< 60
-< 59
-< 58
-< 57
-< 56
-< 55
-< 54
-< 53
-< 52
-< 51
-< 50
-< 49
-< 48
-< 47
-< 46
-< 45
-< 44
-< 43
-< 42
-< 41
-< 40
-< 39
-< 38
-< 37
-< 36
-< 35
-< 34
-< 33
-< 32
-< 31
-< 30
-< 29
-< 28
-< 27
-< 26
-< 25
-< 24
-< 23
-< 22
-< 21
-< 20
-< 19
-< 18
-< 17
-< 16
-< 15
-< 14
-< 13
-< 12
-< 11
-< 10
-< 9
-< 8
-< 7
-< 6
-< 5
-< 4
-< 3
-< 2
-< 1
-< Bye
+149a150
+> vtid: 9
+150a152,154
+> 2051852216->9->                                            9
+> 10->              3
+> 
+152,153c156,157
+<               3
+<                                             9
 ---
-> Child process (20786) exited due to signal (Aborted).
----------
-=================================================
-TEST 17: Two Lwps. spawn then exits 50 times.
-
-Two threads creates new ones, then exits.
-
-
-
-----------
-Reference:
-----------
-Counter is 50.  Exiting
-Counter is 50.  Exiting
-Counter is 49.  Exiting
-Counter is 49.  Exiting
-Counter is 48.  Exiting
-Counter is 48.  Exiting
-Counter is 47.  Exiting
-Counter is 47.  Exiting
-Counter is 46.  Exiting
-Counter is 46.  Exiting
-Counter is 45.  Exiting
-Counter is 45.  Exiting
-Counter is 44.  Exiting
-Counter is 44.  Exiting
-Counter is 43.  Exiting
-Counter is 43.  Exiting
-Counter is 42.  Exiting
-Counter is 42.  Exiting
-Counter is 41.  Exiting
-Counter is 41.  Exiting
-Counter is 40.  Exiting
-Counter is 40.  Exiting
-Counter is 39.  Exiting
-Counter is 39.  Exiting
-Counter is 38.  Exiting
-Counter is 38.  Exiting
-Counter is 37.  Exiting
-Counter is 37.  Exiting
-Counter is 36.  Exiting
-Counter is 36.  Exiting
-Counter is 35.  Exiting
-Counter is 35.  Exiting
-Counter is 34.  Exiting
-Counter is 34.  Exiting
-Counter is 33.  Exiting
-Counter is 33.  Exiting
-Counter is 32.  Exiting
-Counter is 32.  Exiting
-Counter is 31.  Exiting
-Counter is 31.  Exiting
-Counter is 30.  Exiting
-Counter is 30.  Exiting
-Counter is 29.  Exiting
-Counter is 29.  Exiting
-Counter is 28.  Exiting
-Counter is 28.  Exiting
-Counter is 27.  Exiting
-Counter is 27.  Exiting
-Counter is 26.  Exiting
-Counter is 26.  Exiting
-Counter is 25.  Exiting
-Counter is 25.  Exiting
-Counter is 24.  Exiting
-Counter is 24.  Exiting
-Counter is 23.  Exiting
-Counter is 23.  Exiting
-Counter is 22.  Exiting
-Counter is 22.  Exiting
-Counter is 21.  Exiting
-Counter is 21.  Exiting
-Counter is 20.  Exiting
-Counter is 20.  Exiting
-Counter is 19.  Exiting
-Counter is 19.  Exiting
-Counter is 18.  Exiting
-Counter is 18.  Exiting
-Counter is 17.  Exiting
-Counter is 17.  Exiting
-Counter is 16.  Exiting
-Counter is 16.  Exiting
-Counter is 15.  Exiting
-Counter is 15.  Exiting
-Counter is 14.  Exiting
-Counter is 14.  Exiting
-Counter is 13.  Exiting
-Counter is 13.  Exiting
-Counter is 12.  Exiting
-Counter is 12.  Exiting
-Counter is 11.  Exiting
-Counter is 11.  Exiting
-Counter is 10.  Exiting
-Counter is 10.  Exiting
-Counter is 9.  Exiting
-Counter is 9.  Exiting
-Counter is 8.  Exiting
-Counter is 8.  Exiting
-Counter is 7.  Exiting
-Counter is 7.  Exiting
-Counter is 6.  Exiting
-Counter is 6.  Exiting
-Counter is 5.  Exiting
-Counter is 5.  Exiting
-Counter is 4.  Exiting
-Counter is 4.  Exiting
-Counter is 3.  Exiting
-Counter is 3.  Exiting
-Counter is 2.  Exiting
-Counter is 2.  Exiting
-Counter is 1.  Exiting
-Counter is 1.  Exiting
-Bye
-Bye
-----------
-Submitted:
-----------
-*** Error in `/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime': double free or corruption (!prev): 0x0000000000c4a2f0 ***
-======= Backtrace: =========
-/lib64/libc.so.6(+0x81329)[0x7f23bcffa329]
-./liblwp.so(lwp_wait+0x149)[0x7f23bd348ad7]
-/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x40121b]
-/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f23bcf9b555]
-/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x4010ce]
-======= Memory map: ========
-00400000-00401000 r--p 00000000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-00401000-00402000 r-xp 00001000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-00402000-00403000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-00403000-00404000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-00404000-00405000 rw-p 00003000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-00c4a000-00c6b000 rw-p 00000000 00:00 0                                  [heap]
-7f23b0000000-7f23b0021000 rw-p 00000000 00:00 0 
-7f23b0021000-7f23b4000000 ---p 00000000 00:00 0 
-7f23b7d63000-7f23b7d78000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f23b7d78000-7f23b7f77000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f23b7f77000-7f23b7f78000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f23b7f78000-7f23b7f79000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-7f23b7f79000-7f23b8779000 rw-p 00000000 00:00 0 
-7f23b877a000-7f23b8f79000 rw-p 00000000 00:00 0 
-7f23b8f7a000-7f23b9779000 rw-p 00000000 00:00 0 
-7f23b977a000-7f23b9f79000 rw-p 00000000 00:00 0 
-7f23b9f7a000-7f23ba779000 rw-p 00000000 00:00 0 
-7f23ba77a000-7f23baf79000 rw-p 00000000 00:00 0 
-7f23baf7a000-7f23bb779000 rw-p 00000000 00:00 0 
-7f23bb77a000-7f23bbf79000 rw-p 00000000 00:00 0 
-7f23bbf7a000-7f23bc779000 rw-p 00000000 00:00 0 
-7f23bc77a000-7f23bcf79000 rw-p 00000000 00:00 0 
-7f23bcf79000-7f23bd13d000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f23bd13d000-7f23bd33c000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f23bd33c000-7f23bd340000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f23bd340000-7f23bd342000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-7f23bd342000-7f23bd347000 rw-p 00000000 00:00 0 
-7f23bd347000-7f23bd34a000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f23bd34a000-7f23bd549000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f23bd549000-7f23bd54a000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f23bd54a000-7f23bd54b000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-7f23bd54b000-7f23bd56d000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f23bd753000-7f23bd756000 rw-p 00000000 00:00 0 
-7f23bd769000-7f23bd76c000 rw-p 00000000 00:00 0 
-7f23bd76c000-7f23bd76d000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f23bd76d000-7f23bd76e000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-7f23bd76e000-7f23bd76f000 rw-p 00000000 00:00 0 
-7fff3ebc1000-7fff3ebe0000 rwxp 00000000 00:00 0                          [stack]
-7fff3ebe0000-7fff3ebe2000 rw-p 00000000 00:00 0 
-7fff3ebed000-7fff3ebef000 r-xp 00000000 00:00 0                          [vdso]
-ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-Counter is 50.  Exiting
-Counter is 50.  Exiting
-Counter is 49.  Exiting
-Counter is 49.  Exiting
-Counter is 48.  Exiting
-Counter is 48.  Exiting
-Counter is 47.  Exiting
-Counter is 47.  Exiting
-Child process (20835) exited due to signal (Aborted).
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-0a1,49
-> *** Error in `/home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime': double free or corruption (!prev): 0x0000000000c4a2f0 ***
-> ======= Backtrace: =========
-> /lib64/libc.so.6(+0x81329)[0x7f23bcffa329]
-> ./liblwp.so(lwp_wait+0x149)[0x7f23bd348ad7]
-> /home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x40121b]
-> /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f23bcf9b555]
-> /home/pn-cs453/lib/asgn2//testlib/17_100_procs_twoatatime/17_100_procs_twoatatime[0x4010ce]
-> ======= Memory map: ========
-> 00400000-00401000 r--p 00000000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-> 00401000-00402000 r-xp 00001000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-> 00402000-00403000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-> 00403000-00404000 r--p 00002000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-> 00404000-00405000 rw-p 00003000 00:42 128732052                          /home/pn-cs453/lib/asgn2/testlib/17_100_procs_twoatatime/17_100_procs_twoatatime
-> 00c4a000-00c6b000 rw-p 00000000 00:00 0                                  [heap]
-> 7f23b0000000-7f23b0021000 rw-p 00000000 00:00 0 
-> 7f23b0021000-7f23b4000000 ---p 00000000 00:00 0 
-> 7f23b7d63000-7f23b7d78000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f23b7d78000-7f23b7f77000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f23b7f77000-7f23b7f78000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f23b7f78000-7f23b7f79000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
-> 7f23b7f79000-7f23b8779000 rw-p 00000000 00:00 0 
-> 7f23b877a000-7f23b8f79000 rw-p 00000000 00:00 0 
-> 7f23b8f7a000-7f23b9779000 rw-p 00000000 00:00 0 
-> 7f23b977a000-7f23b9f79000 rw-p 00000000 00:00 0 
-> 7f23b9f7a000-7f23ba779000 rw-p 00000000 00:00 0 
-> 7f23ba77a000-7f23baf79000 rw-p 00000000 00:00 0 
-> 7f23baf7a000-7f23bb779000 rw-p 00000000 00:00 0 
-> 7f23bb77a000-7f23bbf79000 rw-p 00000000 00:00 0 
-> 7f23bbf7a000-7f23bc779000 rw-p 00000000 00:00 0 
-> 7f23bc77a000-7f23bcf79000 rw-p 00000000 00:00 0 
-> 7f23bcf79000-7f23bd13d000 r-xp 00000000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f23bd13d000-7f23bd33c000 ---p 001c4000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f23bd33c000-7f23bd340000 r--p 001c3000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f23bd340000-7f23bd342000 rw-p 001c7000 fd:00 5507                       /usr/lib64/libc-2.17.so
-> 7f23bd342000-7f23bd347000 rw-p 00000000 00:00 0 
-> 7f23bd347000-7f23bd34a000 r-xp 00000000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f23bd34a000-7f23bd549000 ---p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f23bd549000-7f23bd54a000 r--p 00002000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f23bd54a000-7f23bd54b000 rw-p 00003000 00:2c 334834257                  /home/ssabed/csc453proj2/liblwp.so
-> 7f23bd54b000-7f23bd56d000 r-xp 00000000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f23bd753000-7f23bd756000 rw-p 00000000 00:00 0 
-> 7f23bd769000-7f23bd76c000 rw-p 00000000 00:00 0 
-> 7f23bd76c000-7f23bd76d000 r--p 00021000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f23bd76d000-7f23bd76e000 rw-p 00022000 fd:00 232848                     /usr/lib64/ld-2.17.so
-> 7f23bd76e000-7f23bd76f000 rw-p 00000000 00:00 0 
-> 7fff3ebc1000-7fff3ebe0000 rwxp 00000000 00:00 0                          [stack]
-> 7fff3ebe0000-7fff3ebe2000 rw-p 00000000 00:00 0 
-> 7fff3ebed000-7fff3ebef000 r-xp 00000000 00:00 0                          [vdso]
-> ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-9,102c58
-< Counter is 46.  Exiting
-< Counter is 46.  Exiting
-< Counter is 45.  Exiting
-< Counter is 45.  Exiting
-< Counter is 44.  Exiting
-< Counter is 44.  Exiting
-< Counter is 43.  Exiting
-< Counter is 43.  Exiting
-< Counter is 42.  Exiting
-< Counter is 42.  Exiting
-< Counter is 41.  Exiting
-< Counter is 41.  Exiting
-< Counter is 40.  Exiting
-< Counter is 40.  Exiting
-< Counter is 39.  Exiting
-< Counter is 39.  Exiting
-< Counter is 38.  Exiting
-< Counter is 38.  Exiting
-< Counter is 37.  Exiting
-< Counter is 37.  Exiting
-< Counter is 36.  Exiting
-< Counter is 36.  Exiting
-< Counter is 35.  Exiting
-< Counter is 35.  Exiting
-< Counter is 34.  Exiting
-< Counter is 34.  Exiting
-< Counter is 33.  Exiting
-< Counter is 33.  Exiting
-< Counter is 32.  Exiting
-< Counter is 32.  Exiting
-< Counter is 31.  Exiting
-< Counter is 31.  Exiting
-< Counter is 30.  Exiting
-< Counter is 30.  Exiting
-< Counter is 29.  Exiting
-< Counter is 29.  Exiting
-< Counter is 28.  Exiting
-< Counter is 28.  Exiting
-< Counter is 27.  Exiting
-< Counter is 27.  Exiting
-< Counter is 26.  Exiting
-< Counter is 26.  Exiting
-< Counter is 25.  Exiting
-< Counter is 25.  Exiting
-< Counter is 24.  Exiting
-< Counter is 24.  Exiting
-< Counter is 23.  Exiting
-< Counter is 23.  Exiting
-< Counter is 22.  Exiting
-< Counter is 22.  Exiting
-< Counter is 21.  Exiting
-< Counter is 21.  Exiting
-< Counter is 20.  Exiting
-< Counter is 20.  Exiting
-< Counter is 19.  Exiting
-< Counter is 19.  Exiting
-< Counter is 18.  Exiting
-< Counter is 18.  Exiting
-< Counter is 17.  Exiting
-< Counter is 17.  Exiting
-< Counter is 16.  Exiting
-< Counter is 16.  Exiting
-< Counter is 15.  Exiting
-< Counter is 15.  Exiting
-< Counter is 14.  Exiting
-< Counter is 14.  Exiting
-< Counter is 13.  Exiting
-< Counter is 13.  Exiting
-< Counter is 12.  Exiting
-< Counter is 12.  Exiting
-< Counter is 11.  Exiting
-< Counter is 11.  Exiting
-< Counter is 10.  Exiting
-< Counter is 10.  Exiting
-< Counter is 9.  Exiting
-< Counter is 9.  Exiting
-< Counter is 8.  Exiting
-< Counter is 8.  Exiting
-< Counter is 7.  Exiting
-< Counter is 7.  Exiting
-< Counter is 6.  Exiting
-< Counter is 6.  Exiting
-< Counter is 5.  Exiting
-< Counter is 5.  Exiting
-< Counter is 4.  Exiting
-< Counter is 4.  Exiting
-< Counter is 3.  Exiting
-< Counter is 3.  Exiting
-< Counter is 2.  Exiting
-< Counter is 2.  Exiting
-< Counter is 1.  Exiting
-< Counter is 1.  Exiting
-< Bye
-< Bye
----
-> Child process (20835) exited due to signal (Aborted).
----------
-=================================================
-TEST 21: Transfer threads between schedulers (stopped)
-
-Create a number of threads, then set_scheduler() and see if 
-they transfer properly.
-
-
-
-
-
-----------
-Reference:
-----------
-Creating LWPS
-Setting the scheduler.
-Launching LWPS
-    1
-         2
-              3
-                   4
-                        5
-         2
-              3
-                   4
-                        5
-              3
-                   4
-                        5
-                   4
-                        5
-                        5
-Back from LWPS.
-----------
-Submitted:
-----------
-Child process (20964) exited due to signal (Segmentation fault).
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-1,19c1
-< Creating LWPS
-< Setting the scheduler.
-< Launching LWPS
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<          2
-<               3
-<                    4
-<                         5
-<               3
-<                    4
-<                         5
-<                    4
-<                         5
-<                         5
-< Back from LWPS.
----
-> Child process (20964) exited due to signal (Segmentation fault).
----------
-=================================================
-TEST 22: Transfer threads between schedulers (live)
-
-Create a number of threads, start them running,
-then set_scheduler() and see if they transfer properly.
-
-
-
-
-
-----------
-Reference:
-----------
-Creating LWPS
-Launching LWPS
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-Setting the scheduler.
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-Back from LWPS.
-----------
-Submitted:
-----------
-Child process (21033) exited due to signal (Segmentation fault).
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-1,34c1
-< Creating LWPS
-< Launching LWPS
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<     1
-<          2
-<               3
-<                    4
-<                         5
-< Setting the scheduler.
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<     1
-<          2
-<               3
-<                    4
-<                         5
-< Back from LWPS.
----
-> Child process (21033) exited due to signal (Segmentation fault).
----------
-=================================================
-TEST 23: Transfer threads to same scheduler (live)
-
-Create a number of threads, start them running,
-then set_scheduler() to the currently installed
-scheduler.
-
-
-
-
-
-----------
-Reference:
-----------
-Setting Scheduler
-Creating LWPS
-Launching LWPS
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-Setting the scheduler to itself.
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-Back from LWPS.
-----------
-Submitted:
-----------
-Setting Scheduler
-Creating LWPS
-Launching LWPS
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-    1
-         2
-              3
-                   4
-                        5
-Setting the scheduler to itself.
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-20,35d19
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<     1
-<          2
-<               3
-<                    4
-<                         5
-<     1
-<          2
-<               3
-<                    4
-<                         5
-< Back from LWPS.
----------
-=================================================
-TEST 24: Transfer threads between schedulers check for init/shutdown
-
-Create a number of threads, start them running,
-then set_scheduler() and see if they transfer properly.
-
-
-
-
-
-----------
-Reference:
-----------
-init: called on first scheduler
-Creating LWPS
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Launching LWPS
-Admitting new thread to First scheduler
-(first->next())
-    1
-(first->next())
-         2
-(first->next())
-              3
-(first->next())
-                   4
-(first->next())
-                        5
-(first->next())
-Removing thread from First scheduler
-(first->next())
-    1
-(first->next())
-         2
-(first->next())
-              3
-(first->next())
-                   4
-(first->next())
-                        5
-(first->next())
-    1
-(first->next())
-         2
-(first->next())
-              3
-(first->next())
-                   4
-(first->next())
-                        5
-Setting the scheduler.
-init: called on second scheduler
-(first->next())
-Removing thread from First scheduler
-Admitting new thread to Second scheduler
-(first->next())
-Removing thread from First scheduler
-Admitting new thread to Second scheduler
-(first->next())
-Removing thread from First scheduler
-Admitting new thread to Second scheduler
-(first->next())
-Removing thread from First scheduler
-Admitting new thread to Second scheduler
-(first->next())
-Removing thread from First scheduler
-Admitting new thread to Second scheduler
-(first->next())
-shutdown: called on first scheduler
-(second->next())
-    1
-(second->next())
-         2
-(second->next())
-              3
-(second->next())
-                   4
-(second->next())
-                        5
-(second->next())
-    1
-(second->next())
-         2
-(second->next())
-              3
-(second->next())
-                   4
-(second->next())
-                        5
-(second->next())
-    1
-(second->next())
-         2
-(second->next())
-              3
-(second->next())
-                   4
-(second->next())
-                        5
-(second->next())
-Removing thread from Second scheduler
-Admitting new thread to Second scheduler
-(second->next())
-Removing thread from Second scheduler
-(second->next())
-Removing thread from Second scheduler
-(second->next())
-Removing thread from Second scheduler
-(second->next())
-Removing thread from Second scheduler
-(second->next())
-Removing thread from Second scheduler
-Admitting new thread to Second scheduler
-(second->next())
-Back from LWPS.
-----------
-Submitted:
-----------
-Creating LWPS
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Admitting new thread to First scheduler
-Launching LWPS
-Admitting new thread to First scheduler
-(first->next())
-    1
-(first->next())
-         2
-(first->next())
-              3
-(first->next())
-                   4
-(first->next())
-                        5
-(first->next())
-Removing thread from First scheduler
-(first->next())
-    1
-(first->next())
-         2
-(first->next())
-              3
-(first->next())
-                   4
-(first->next())
-                        5
-(first->next())
-    1
-(first->next())
-         2
-(first->next())
-              3
-(first->next())
-                   4
-(first->next())
-                        5
-Setting the scheduler.
-(first->next())
-Admitting new thread to Second scheduler
-Removing thread from First scheduler
-(first->next())
-(second->next())
-    1
-(second->next())
-    1
-(second->next())
-    1
-(second->next())
-Removing thread from Second scheduler
-Admitting new thread to Second scheduler
-(second->next())
-Removing thread from Second scheduler
-(second->next())
-
----------------------------------
-Differences (< reference > output)
----------------------------------
-
-1d0
-< init: called on first scheduler
-43d41
-< init: called on second scheduler
-45,54d42
-< Removing thread from First scheduler
-< Admitting new thread to Second scheduler
-< (first->next())
-< Removing thread from First scheduler
-< Admitting new thread to Second scheduler
-< (first->next())
-< Removing thread from First scheduler
-< Admitting new thread to Second scheduler
-< (first->next())
-< Removing thread from First scheduler
-56d43
-< (first->next())
-58d44
-< Admitting new thread to Second scheduler
-60d45
-< shutdown: called on first scheduler
-64,71d48
-<          2
-< (second->next())
-<               3
-< (second->next())
-<                    4
-< (second->next())
-<                         5
-< (second->next())
-74,81d50
-<          2
-< (second->next())
-<               3
-< (second->next())
-<                    4
-< (second->next())
-<                         5
-< (second->next())
-84,91d52
-<          2
-< (second->next())
-<               3
-< (second->next())
-<                    4
-< (second->next())
-<                         5
-< (second->next())
-97,106d57
-< Removing thread from Second scheduler
-< (second->next())
-< Removing thread from Second scheduler
-< (second->next())
-< Removing thread from Second scheduler
-< (second->next())
-< Removing thread from Second scheduler
-< Admitting new thread to Second scheduler
-< (second->next())
-< Back from LWPS.
+> 
+> return: 9
 ---------
 =================================================
 TEST 27: Tid2thread() returns NULL given a bad tid?
@@ -1149,6 +954,10 @@ Back from LWPS.
 ----------
 Submitted:
 ----------
+vtid: 2
+1->2->
+
+return: 2
 tid2thread() returned a value with a bogus tid.  Not good
 Launching LWPS
 Back from LWPS.
@@ -1157,6 +966,2743 @@ Back from LWPS.
 Differences (< reference > output)
 ---------------------------------
 
-0a1
+0a1,5
+> vtid: 2
+> 1->2->
+> 
+> return: 2
 > tid2thread() returned a value with a bogus tid.  Not good
+---------
+=================================================
+TEST 28: Is thread library using sched_{one,two}?
+
+This launches a set of threads, then installs a scheduler that 
+intentionally places bogus values in sched_one and sched_two then 
+calls tid2thread() a bunch.
+
+
+
+----------
+Reference:
+----------
+Launching LWPS
+  1
+     2
+        3
+           4
+              5
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+        3
+           4
+              5
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+     2
+        3
+           4
+              5
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+           4
+              5
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+              5
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                                    18
+                                                       19
+                                                          20
+                                                       19
+                                                          20
+                                                          20
+Back from LWPS.
+----------
+Submitted:
+----------
+vtid: 1
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 1
+vtid: 2
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 2
+vtid: 3
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 3
+vtid: 4
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 4
+vtid: 5
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 5
+vtid: 6
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 6
+vtid: 7
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 1
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 1
+vtid: 3
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 3
+vtid: 4
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 4
+vtid: 5
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 5
+vtid: 6
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 6
+vtid: 7
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 2
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 2
+vtid: 3
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 3
+vtid: 4
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 4
+vtid: 5
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 5
+vtid: 6
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 6
+vtid: 7
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 2
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 2
+vtid: 4
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 4
+vtid: 5
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 5
+vtid: 6
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 6
+vtid: 7
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 3
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 3
+vtid: 5
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 5
+vtid: 6
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 6
+vtid: 7
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 4
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 4
+vtid: 6
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 6
+vtid: 7
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 5
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 5
+vtid: 7
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 8
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 9
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->5->6->7->8->9->10->11->12->Launching LWPS
+13->  1
+14->     2
+15->        3
+16->           4
+17->              5
+18->                 6
+19->                    7
+20->                       8
+21->                          9
+
+                            10
+
+return: 17
+                               11
+vtid: 18
+                                  12
+1215444920->5->                                     13
+6->7->                                        14
+8->9->                                           15
+10->11->                                              16
+12->13->                                                 17
+14->15->                                                    18
+16->17->                                                       19
+18->19->                                                          20
+20->        3
+21->           4
+
+              5
+
+return: 18
+                 6
+vtid: 19
+                    7
+1215444920->                       8
+5->                          9
+6->                            10
+7->                               11
+8->                                  12
+9->                                     13
+10->11->                                        14
+12->13->                                           15
+14->15->                                              16
+16->17->                                                 17
+18->19->                                                    18
+20->21->                                                       19
+
+
+return: 19
+                                                          20
+vtid: 20
+     2
+1215444920->        3
+5->           4
+6->              5
+7->                 6
+8->                    7
+9->                       8
+10->11->                          9
+12->13->                            10
+14->15->                               11
+16->17->                                  12
+18->19->                                     13
+20->21->                                        14
+
+
+return: 20
+                                           15
+vtid: 21
+1215444920->                                              16
+5->6->                                                 17
+7->8->9->                                                    18
+10->11->                                                       19
+12->13->14->                                                          20
+15->           4
+16->17->              5
+18->                 6
+19->20->                    7
+21->                       8
+                          9
+                            10
+                               11
+                                  12
+
+                                     13
+
+return: 21
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+              5
+                 6
+                    7
+                       8
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+vtid: 6
+                                           15
+1215444920->                                              16
+6->7->                                                 17
+8->9->                                                    18
+10->11->                                                       19
+12->13->                                                          20
+14->                 6
+15->                    7
+16->                       8
+17->                          9
+18->                            10
+19->                               11
+20->                                  12
+21->                                     13
+
+                                        14
+
+return: 6
+                                           15
+vtid: 8
+                                              16
+1215444920->6->                                                 17
+7->8->                                                    18
+9->10->11->                                                       19
+12->13->14->                                                          20
+15->                    7
+16->17->                       8
+18->19->                          9
+20->21->                            10
+
+
+return: 8
+                               11
+vtid: 9
+                                  12
+1215444920->                                     13
+6->                                        14
+7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 7
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 7
+vtid: 9
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 10
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 8
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 8
+vtid: 10
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 11
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 9
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 9
+vtid: 11
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 12
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 10
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 10
+vtid: 12
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 13
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 11
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 11
+vtid: 13
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 14
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->11->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 12
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 12
+vtid: 14
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 15
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->12->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 13
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 13
+vtid: 15
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 15
+vtid: 16
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->13->14->15->16->17->18->19->20->21->
+
+return: 21
+vtid: 14
+1215444920->14->15->16->17->18->19->20->21->
+
+return: 14
+vtid: 16
+1215444920->14->15->16->17->18->19->20->21->
+
+return: 16
+vtid: 17
+1215444920->14->15->16->17->18->19->20->21->
+
+return: 17
+vtid: 18
+1215444920->14->15->16->17->18->19->20->21->
+
+return: 18
+vtid: 19
+1215444920->14->15->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->14->15->16->17->18->19->20->                                           15
+21->
+                                              16
+
+return: 20
+                                                 17
+vtid: 21
+1215444920->                                                    18
+14->15->16->                                                       19
+17->18->                                                          20
+19->                       8
+20->                          9
+21->                            10
+
+                               11
+
+return: 21
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                          9
+                            10
+                               11
+                                  12
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+vtid: 15
+                                                    18
+1215444920->15->                                                       19
+16->17->                                                          20
+18->                            10
+19->                               11
+20->                                  12
+21->
+                                     13
+
+return: 15
+                                        14
+vtid: 17
+                                           15
+1215444920->15->                                              16
+16->17->                                                 17
+18->19->                                                    18
+20->21->                                                       19
+
+
+return: 17
+                                                          20
+vtid: 18
+                               11
+1215444920->                                  12
+15->                                     13
+16->17->                                        14
+18->                                           15
+19->20->                                              16
+21->
+                                                 17
+
+return: 18
+                                                    18
+vtid: 19
+                                                       19
+1215444920->15->                                                          20
+16->                                  12
+17->18->19->                                     13
+20->21->                                        14
+
+
+return: 19
+                                           15
+vtid: 20
+                                              16
+1215444920->15->                                                 17
+16->17->                                                    18
+18->19->20->                                                       19
+21->
+
+return: 20
+vtid: 21
+1215444920->15->16->17->18->19->20->21->
+
+return: 21
+                                                          20
+                                     13
+                                        14
+                                           15
+                                              16
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                        14
+                                           15
+                                              16
+                                                 17
+vtid: 16
+                                                    18
+1215444920->16->                                                       19
+17->18->                                                          20
+19->20->                                           15
+21->
+                                              16
+
+return: 16
+                                                 17
+vtid: 18
+1215444920->                                                    18
+16->17->                                                       19
+18->19->                                                          20
+20->                                              16
+21->
+                                                 17
+
+return: 18
+                                                    18
+vtid: 19
+1215444920->16->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->16->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->16->17->18->19->20->21->
+
+return: 21
+vtid: 17
+1215444920->17->18->19->20->21->
+
+return: 17
+vtid: 19
+1215444920->17->18->19->20->21->
+
+return: 19
+vtid: 20
+1215444920->17->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->17->18->19->20->21->
+
+return: 21
+vtid: 18
+1215444920->18->19->20->21->
+
+return: 18
+vtid: 20
+1215444920->18->19->20->21->
+
+return: 20
+vtid: 21
+1215444920->18->19->20->21->
+
+return: 21
+vtid: 19
+1215444920->19->20->21->
+
+return: 19
+vtid: 21
+1215444920->19->20->21->
+
+return: 21
+vtid: 20
+1215444920->20->21->
+
+return: 20
+vtid: 21
+1215444920->20->21->
+
+return: 21
+                                                       19
+                                                          20
+                                                 17
+                                                    18
+                                                       19
+                                                          20
+                                                    18
+                                                       19
+                                                          20
+                                                       19
+                                                          20
+                                                          20
+Back from LWPS.
+
+---------------------------------
+Differences (< reference > output)
+---------------------------------
+
+1,10c1,512
+< Launching LWPS
+<   1
+<      2
+<         3
+<            4
+<               5
+<                  6
+<                     7
+<                        8
+<                           9
+---
+> vtid: 1
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 1
+> vtid: 2
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 2
+> vtid: 3
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 3
+> vtid: 4
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 4
+> vtid: 5
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 5
+> vtid: 6
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 6
+> vtid: 7
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 1
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 1
+> vtid: 3
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 3
+> vtid: 4
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 4
+> vtid: 5
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 5
+> vtid: 6
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 6
+> vtid: 7
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 2
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 2
+> vtid: 3
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 3
+> vtid: 4
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 4
+> vtid: 5
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 5
+> vtid: 6
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 6
+> vtid: 7
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 2
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 2
+> vtid: 4
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 4
+> vtid: 5
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 5
+> vtid: 6
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 6
+> vtid: 7
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->2->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 3
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 3
+> vtid: 5
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 5
+> vtid: 6
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 6
+> vtid: 7
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->3->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 4
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 4
+> vtid: 6
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 6
+> vtid: 7
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->4->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 5
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 5
+> vtid: 7
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 8
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 9
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->5->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->5->6->7->8->9->10->11->12->Launching LWPS
+> 13->  1
+> 14->     2
+> 15->        3
+> 16->           4
+> 17->              5
+> 18->                 6
+> 19->                    7
+> 20->                       8
+> 21->                          9
+> 
+11a514,515
+> 
+> return: 17
+12a517
+> vtid: 18
+14,23c519,529
+<                                      13
+<                                         14
+<                                            15
+<                                               16
+<                                                  17
+<                                                     18
+<                                                        19
+<                                                           20
+<         3
+<            4
+---
+> 1215444920->5->                                     13
+> 6->7->                                        14
+> 8->9->                                           15
+> 10->11->                                              16
+> 12->13->                                                 17
+> 14->15->                                                    18
+> 16->17->                                                       19
+> 18->19->                                                          20
+> 20->        3
+> 21->           4
+> 
+24a531,532
+> 
+> return: 18
+25a534
+> vtid: 19
+27,38c536,550
+<                        8
+<                           9
+<                             10
+<                                11
+<                                   12
+<                                      13
+<                                         14
+<                                            15
+<                                               16
+<                                                  17
+<                                                     18
+<                                                        19
+---
+> 1215444920->                       8
+> 5->                          9
+> 6->                            10
+> 7->                               11
+> 8->                                  12
+> 9->                                     13
+> 10->11->                                        14
+> 12->13->                                           15
+> 14->15->                                              16
+> 16->17->                                                 17
+> 18->19->                                                    18
+> 20->21->                                                       19
+> 
+> 
+> return: 19
+39a552
+> vtid: 20
+41,52c554,568
+<         3
+<            4
+<               5
+<                  6
+<                     7
+<                        8
+<                           9
+<                             10
+<                                11
+<                                   12
+<                                      13
+<                                         14
+---
+> 1215444920->        3
+> 5->           4
+> 6->              5
+> 7->                 6
+> 8->                    7
+> 9->                       8
+> 10->11->                          9
+> 12->13->                            10
+> 14->15->                               11
+> 16->17->                                  12
+> 18->19->                                     13
+> 20->21->                                        14
+> 
+> 
+> return: 20
+54,63c570,580
+<                                               16
+<                                                  17
+<                                                     18
+<                                                        19
+<                                                           20
+<            4
+<               5
+<                  6
+<                     7
+<                        8
+---
+> vtid: 21
+> 1215444920->                                              16
+> 5->6->                                                 17
+> 7->8->9->                                                    18
+> 10->11->                                                       19
+> 12->13->14->                                                          20
+> 15->           4
+> 16->17->              5
+> 18->                 6
+> 19->20->                    7
+> 21->                       8
+67a585
+> 
+68a587,588
+> 
+> return: 21
+85a606
+> vtid: 6
+87,99c608,621
+<                                               16
+<                                                  17
+<                                                     18
+<                                                        19
+<                                                           20
+<                  6
+<                     7
+<                        8
+<                           9
+<                             10
+<                                11
+<                                   12
+<                                      13
+---
+> 1215444920->                                              16
+> 6->7->                                                 17
+> 8->9->                                                    18
+> 10->11->                                                       19
+> 12->13->                                                          20
+> 14->                 6
+> 15->                    7
+> 16->                       8
+> 17->                          9
+> 18->                            10
+> 19->                               11
+> 20->                                  12
+> 21->                                     13
+> 
+100a623,624
+> 
+> return: 6
+101a626
+> vtid: 8
+103,110c628,638
+<                                                  17
+<                                                     18
+<                                                        19
+<                                                           20
+<                     7
+<                        8
+<                           9
+<                             10
+---
+> 1215444920->6->                                                 17
+> 7->8->                                                    18
+> 9->10->11->                                                       19
+> 12->13->14->                                                          20
+> 15->                    7
+> 16->17->                       8
+> 18->19->                          9
+> 20->21->                            10
+> 
+> 
+> return: 8
+111a640
+> vtid: 9
+113,115c642,1025
+<                                      13
+<                                         14
+<                                            15
+---
+> 1215444920->                                     13
+> 6->                                        14
+> 7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->6->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 7
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 7
+> vtid: 9
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 10
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->7->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 8
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 8
+> vtid: 10
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 11
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->8->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 9
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 9
+> vtid: 11
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 12
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->9->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 10
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 10
+> vtid: 12
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 13
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->10->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 11
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 11
+> vtid: 13
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 14
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->11->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 12
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 12
+> vtid: 14
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 15
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->12->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 13
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 13
+> vtid: 15
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 15
+> vtid: 16
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->13->14->15->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 14
+> 1215444920->14->15->16->17->18->19->20->21->
+> 
+> return: 14
+> vtid: 16
+> 1215444920->14->15->16->17->18->19->20->21->
+> 
+> return: 16
+> vtid: 17
+> 1215444920->14->15->16->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 18
+> 1215444920->14->15->16->17->18->19->20->21->
+> 
+> return: 18
+> vtid: 19
+> 1215444920->14->15->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->14->15->16->17->18->19->20->                                           15
+> 21->
+116a1027,1028
+> 
+> return: 20
+118,123c1030,1037
+<                                                     18
+<                                                        19
+<                                                           20
+<                        8
+<                           9
+<                             10
+---
+> vtid: 21
+> 1215444920->                                                    18
+> 14->15->16->                                                       19
+> 17->18->                                                          20
+> 19->                       8
+> 20->                          9
+> 21->                            10
+> 
+124a1039,1040
+> 
+> return: 21
+142a1059
+> vtid: 15
+144,148c1061,1066
+<                                                        19
+<                                                           20
+<                             10
+<                                11
+<                                   12
+---
+> 1215444920->15->                                                       19
+> 16->17->                                                          20
+> 18->                            10
+> 19->                               11
+> 20->                                  12
+> 21->
+149a1068,1069
+> 
+> return: 15
+150a1071
+> vtid: 17
+152,155c1073,1079
+<                                               16
+<                                                  17
+<                                                     18
+<                                                        19
+---
+> 1215444920->15->                                              16
+> 16->17->                                                 17
+> 18->19->                                                    18
+> 20->21->                                                       19
+> 
+> 
+> return: 17
+156a1081
+> vtid: 18
+158,162c1083,1088
+<                                   12
+<                                      13
+<                                         14
+<                                            15
+<                                               16
+---
+> 1215444920->                                  12
+> 15->                                     13
+> 16->17->                                        14
+> 18->                                           15
+> 19->20->                                              16
+> 21->
+163a1090,1091
+> 
+> return: 18
+164a1093
+> vtid: 19
+166,169c1095,1101
+<                                                           20
+<                                   12
+<                                      13
+<                                         14
+---
+> 1215444920->15->                                                          20
+> 16->                                  12
+> 17->18->19->                                     13
+> 20->21->                                        14
+> 
+> 
+> return: 19
+170a1103
+> vtid: 20
+172,174c1105,1114
+<                                                  17
+<                                                     18
+<                                                        19
+---
+> 1215444920->15->                                                 17
+> 16->17->                                                    18
+> 18->19->20->                                                       19
+> 21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->15->16->17->18->19->20->21->
+> 
+> return: 21
+187a1128
+> vtid: 16
+189,191c1130,1133
+<                                                        19
+<                                                           20
+<                                            15
+---
+> 1215444920->16->                                                       19
+> 17->18->                                                          20
+> 19->20->                                           15
+> 21->
+192a1135,1136
+> 
+> return: 16
+194,197c1138,1143
+<                                                     18
+<                                                        19
+<                                                           20
+<                                               16
+---
+> vtid: 18
+> 1215444920->                                                    18
+> 16->17->                                                       19
+> 18->19->                                                          20
+> 20->                                              16
+> 21->
+198a1145,1146
+> 
+> return: 18
+199a1148,1203
+> vtid: 19
+> 1215444920->16->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->16->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->16->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 17
+> 1215444920->17->18->19->20->21->
+> 
+> return: 17
+> vtid: 19
+> 1215444920->17->18->19->20->21->
+> 
+> return: 19
+> vtid: 20
+> 1215444920->17->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->17->18->19->20->21->
+> 
+> return: 21
+> vtid: 18
+> 1215444920->18->19->20->21->
+> 
+> return: 18
+> vtid: 20
+> 1215444920->18->19->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->18->19->20->21->
+> 
+> return: 21
+> vtid: 19
+> 1215444920->19->20->21->
+> 
+> return: 19
+> vtid: 21
+> 1215444920->19->20->21->
+> 
+> return: 21
+> vtid: 20
+> 1215444920->20->21->
+> 
+> return: 20
+> vtid: 21
+> 1215444920->20->21->
+> 
+> return: 21
 ---------

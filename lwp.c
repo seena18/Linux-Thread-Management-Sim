@@ -14,6 +14,8 @@ thread rr_next(void);
 void lwp_exit(int exitval);
 void lwp_wrap();
 tid_t lwp_gettid(void);
+void printlwps();
+void removeThread();
 void printz();
 
 static struct scheduler rr_publish = {NULL, NULL, rr_admit, rr_remove, rr_next};
@@ -54,11 +56,11 @@ tid_t lwp_create(lwpfun function,void *argument){
         0);
     thread c = (thread)malloc(sizeof(context));
     if(stack==MAP_FAILED){
-        // fprintf(stderr,"Stack allocation failed");
+        fprintf(stderr,"Stack allocation failed");
         return NO_THREAD;
     }
     if(c==MAP_FAILED){
-        // fprintf(stderr,"Context allocation failed");
+        fprintf(stderr,"Context allocation failed");
         return NO_THREAD;
     }
     c->stack=stack;
@@ -99,14 +101,16 @@ tid_t lwp_create(lwpfun function,void *argument){
         lcurr=lcurr->lib_one;
     }
     
-
+    
     return c->tid;
 }
 void lwp_start(){
+    
     thread new = (thread)malloc(sizeof(context));
     new->tid=count++;
     new->status=LWP_LIVE;
     schedule->admit(new);
+    // fprintf(stderr,"Ptid: %d\n",new->tid);
     counter++;
     if(lwps==NULL){
             lwps=new;
@@ -118,6 +122,7 @@ void lwp_start(){
         }
 
     curr=new;
+    
     lwp_yield();
 }
 
@@ -154,8 +159,8 @@ void lwp_exit(int exitval){
             zcurr=zombies;
         }
         else{
-            zcurr->exited=curr;
-            zcurr=zcurr->exited;
+            zcurr->lib_two=curr;
+            zcurr=zcurr->lib_two;
         }
         // printz();
         if(waits!=NULL){
@@ -176,6 +181,7 @@ tid_t lwp_wait(int *status){
     // FILE *fp = fopen("test.txt", "a");
     // fprintf(fp,"Wait: %d\n", curr->tid);
     // fclose(fp);
+    // fprintf(stderr,"Wait: %d\n", curr->tid);
     if(zombies==NULL){
         schedule->remove(curr);
         counter--;
@@ -195,11 +201,11 @@ tid_t lwp_wait(int *status){
         if (status!=NULL){
             *status=temp->status;
         }
-        zombies=zombies->exited;
+        zombies=zombies->lib_two;
         tid_t t=temp->tid;
+        removeThread(temp);
         munmap(temp->stack,sizeof(temp->stacksize));
         // fprintf(stderr,"TID: %d\n", temp->tid);
-
         if(temp!=NULL){
             free(temp);
         }
@@ -220,18 +226,17 @@ tid_t lwp_gettid(void) {
     }
     return curr->tid;
 }
-//2 
-//1->2->
+
 thread tid2thread(tid_t vtid) {
     thread temp = lwps;
-    // fprintf(stderr,"vtid: %d\n",vtid);
+    fprintf(stderr,"vtid: %d\n",vtid);
+    printlwps();
     while(temp!=NULL && temp->tid != vtid){
-        // fprintf(stderr,"%d->",temp->tid);
         temp = temp->lib_one;
     }
-    // fprintf(stderr,"%d->",temp->tid);
-    if(temp!=NULL && temp->tid == vtid){
-        // fprintf(stderr,"\nreturn: %d\n",temp->tid);
+
+    if(temp!=NULL && temp->status == LWP_LIVE && temp->tid == vtid){
+        fprintf(stderr,"\nreturn: %d\n",temp->tid);
         return temp;
     }
     else{
@@ -241,11 +246,12 @@ thread tid2thread(tid_t vtid) {
 }
 void lwp_set_scheduler(scheduler sched){
     
+    if(sched==schedule){
+        return;
+    }
     thread tmp;
     if(sched==NULL){
-        if (sched->init) { 
-            sched->init();
-        }
+        
         scheduler s = &rr_publish;
         while((tmp=schedule->next())!=NULL){
             s->admit(tmp);
@@ -257,12 +263,26 @@ void lwp_set_scheduler(scheduler sched){
         schedule=s;
     }
     else{
-        while((tmp=schedule->next())!=NULL){
-            sched->admit(tmp);
-            schedule->remove(tmp);
+        // fprintf(stderr,"Switching sched\n");
+        if (sched->init) { 
+            sched->init();
         }
-        if (schedule->shutdown) { 
+        int index=0;
+
+        while((tmp=schedule->next())!=NULL){
+            // fprintf(stderr,"On tid: %d\n",tmp->tid);
             
+            schedule->remove(tmp);
+            sched->admit(tmp);
+            
+            // fprintf(stderr,"Success admit tid: %d\n",tmp->tid);
+            
+            // fprintf(stderr,"Success remove tid: %d\n",tmp->tid);
+            index++;
+        }
+        
+        if (schedule->shutdown) { 
+            schedule->shutdown();
         }
         schedule=sched;
     }
@@ -282,8 +302,45 @@ void printz(){
     fprintf(fp,"\n");
     fclose(fp);
 }
+void printlwps(){
+    thread l=lwps;
+    while(l){
+        fprintf(stderr,"%d->",l->tid);
+        l=l->lib_one;
+    }
+    fprintf(stderr,"\n");
+
+}
 void lwp_wrap(lwpfun fun, void *arg){
     int rval;
     rval=fun(arg);
     lwp_exit(rval);
+
+}
+void removeThread(thread victim){
+    // fprintf(stderr,"test1\n");
+    thread prev=NULL;
+    thread curr=lwps;
+    while(curr!=NULL && curr->tid != victim->tid){
+        prev = curr;
+        curr = curr->lib_one;
+    }
+    // fprintf(stderr,"test2\n");
+    if(curr==NULL || curr->tid != victim->tid){
+        return;
+    }
+    
+    if(curr->lib_one && prev){
+        // fprintf(stderr,"test3\n");
+        prev->lib_one = curr->lib_one;
+        
+        // fprintf(stderr,"test4\n");
+    }
+    
+    else if(curr->lib_one==NULL && prev){
+        prev->lib_one=NULL;
+    }
+    
+    
+
 }

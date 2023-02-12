@@ -11,7 +11,8 @@ thread rr_next(void);
 void printlist();
 thread rr_next(void) {
     thread curr;
-
+    //  fprintf(stderr,"Next: "); 
+    // printlist();
     if(first==NULL){
         return NULL;
     }
@@ -55,12 +56,14 @@ void rr_remove(thread victim){
         first=curr->sched_one;
     }
     // FILE *fp = fopen("test.txt", "a");
-    // fprintf(fp,"Remove: "); 
+    // fprintf(stderr,"Remove: "); 
     // fclose(fp);
     // printlist();
 }
 
 void rr_admit(thread new){
+    new->sched_one=NULL;
+    // new->sched_two=NULL;
     if(first==NULL && last==NULL){
         first=new;
         last=new;
@@ -73,15 +76,15 @@ void rr_admit(thread new){
 //     FILE *fp = fopen("test.txt", "a");
 //     fprintf(fp,"Admit: ");  
 //     fclose(fp);
-//     printlist();
+    // printlist();
 }
 void printlist(){
-    FILE *fp = fopen("test.txt", "a");
+    // FILE *fp = fopen("test.txt", "a");
     thread curr=first;
     while(curr){
-        fprintf(fp,"%d->",curr->tid);
+        fprintf(stderr,"%d->",curr->tid);
         curr=curr->sched_one;
     }
-    fprintf(fp,"\n");
-    fclose(fp);
+    fprintf(stderr,"\n");
+    // fclose(fp);
 }
