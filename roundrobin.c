@@ -9,10 +9,12 @@ void rr_admit(thread new);
 void rr_remove(thread victim);
 thread rr_next(void);
 void printlist();
+
+// moves on to next thread in scheduler
 thread rr_next(void) {
     thread curr;
-    //  fprintf(stderr,"Next: "); 
-    // printlist();
+    
+    // if empty scheduler
     if(first==NULL){
         return NULL;
     }
@@ -27,43 +29,49 @@ thread rr_next(void) {
         }
         curr->sched_one=NULL;
         curr->sched_two=NULL;
-        // FILE *fp = fopen("test.txt", "a");
-        // fprintf(fp,"Next: %d\n",curr->tid);
-        // fclose(fp);
+        
+        // moves executed thread to end of scheduler
         rr_admit(curr);
         
         return curr;
     }
 }
+
+// removes given thread from scheduler
 void rr_remove(thread victim){
+
     thread curr=first;
+
     while(curr!=NULL && curr->tid != victim->tid){
         curr = curr->sched_one;
     }
+    // if target thread not found
     if(curr==NULL || curr->tid != victim->tid){
         return;
     }
+    
     if(curr->sched_one){
         curr->sched_one->sched_two=curr->sched_two;
     }
+    // if target thread is at end of scheduler
     else{
         last=curr->sched_two;
     }
     if(curr->sched_two){
         curr->sched_two->sched_one=curr->sched_one;
     }
+    // if target thread is at beginning of scheduler
     else{
         first=curr->sched_one;
     }
-    // FILE *fp = fopen("test.txt", "a");
-    // fprintf(stderr,"Remove: "); 
-    // fclose(fp);
-    // printlist();
 }
 
+// adds given thread to scheduler
 void rr_admit(thread new){
     new->sched_one=NULL;
     // new->sched_two=NULL;
+
+    // if empty scheduler
     if(first==NULL && last==NULL){
         first=new;
         last=new;
@@ -73,18 +81,17 @@ void rr_admit(thread new){
         new->sched_two=last;
         last=new;
     }
-//     FILE *fp = fopen("test.txt", "a");
-//     fprintf(fp,"Admit: ");  
-//     fclose(fp);
-    // printlist();
+
 }
+
+// prints current thread order of scheduler
 void printlist(){
-    // FILE *fp = fopen("test.txt", "a");
+    FILE *fp = fopen("test.txt", "a");
     thread curr=first;
     while(curr){
         fprintf(stderr,"%d->",curr->tid);
         curr=curr->sched_one;
     }
     fprintf(stderr,"\n");
-    // fclose(fp);
+    fclose(fp);
 }
